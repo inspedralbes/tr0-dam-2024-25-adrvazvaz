@@ -1,0 +1,10 @@
+android app
+                   server (node.js)              json amb preguntes
+vue (crud)
+
+
+- vue (hecho, falta funcionalidad con node)       
+
+- andorid app (falta por hacer) 
+
+- server (falta hacer funcionalidad de todo)
