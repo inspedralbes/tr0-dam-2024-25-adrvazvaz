@@ -3,8 +3,11 @@ android app
 vue (crud)
 
 
-- vue (hecho, falta funcionalidad con node)       
+- vue (hecho, falta funcionalidad con Javascript)       
 
 - andorid app (falta por hacer) 
 
-- server (falta hacer funcionalidad de todo)
+- server (falta hacer funcionalidad de TODO)
+    -
+
+
