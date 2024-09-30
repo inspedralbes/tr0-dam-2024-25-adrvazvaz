@@ -50,6 +50,7 @@ app.get('/getPreguntesAndoridApp', (req, res) => {
     }
 });
 
+
 // Agregar nueva pregunta
 app.post('/addPregunta', (req, res) => {
     const newPregunta = req.body;
@@ -67,6 +68,7 @@ app.post('/addPregunta', (req, res) => {
         res.status(500).json({ error: 'Error al guardar la pregunta' });
     }
 });
+
 
 app.put('/updatePregunta', (req, res) => {
     const id = parseInt(req.params.id); 

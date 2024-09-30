@@ -38,18 +38,7 @@ export async function getPreguntes(){
 </script>
 
 <style>
-  .cronometro {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 24px;
-    color: #333;
-  }
-
-  .boton-pequeño {
-    padding: 10px 20px;
-    font-size: 14px; 
-  }
-
+  
   .menu-administrador {
     margin-top: 100px; 
     text-align: center; 
