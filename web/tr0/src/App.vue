@@ -2,62 +2,39 @@
   <body>
     <header>
       <div class="header" id="header">
-        <h1>Benvingut al Quizz de marques comercials.</h1>
-        <br>
-        <h4 class="justificado">
-          El funcionament del joc serà el seguent: <br> <br>
-          - Tens 30 segons per respondre totes les preguntes que puguis. <br>
-          - Només puntuaràn si son correctes.
-        </h4>
+        <div class="menu-administrador" style="background-color: white; padding: 20px; border-radius: 10px;">
+          <h2>Menú d'Administrador</h2>
+          <button class="admin-button">Editar Text o Imatge</button>
+          <button class="admin-button">Inserir Noves Preguntes</button>
+          <button class="admin-button">Borrar Preguntes</button>
+        </div>
       </div>
     </header>
-  
-    <div class="main" id="main">
-      <table>
-        <tr>
-          <td colspan="2" class="td_pregunta">
-            <h1>Pregunta</h1>
-            <img src="" alt="Imatge de la pregunta" class="imatge-pregunta">
-          </td>
-        </tr>
-        <tr>
-          <td class="td-resposta">
-            <button>resposta 1</button>
-          </td>
-          <td class="td-resposta">
-            <button>resposta 2</button>
-          </td>
-        </tr>
-        <tr>
-          <td class="td-resposta">
-            <button>resposta 3</button>
-          </td>
-          <td class="td-resposta">
-            <button>resposta 4</button>
-          </td>
-        </tr>
-      </table>
+
+    <div class="preguntas-list">
+      <h3>Preguntas del juego:</h3>
+      <ul>
+        <li v-for="pregunta in preguntas" :key="pregunta.id">
+          <strong>{{ pregunta.pregunta }}</strong>
+          <ul>
+            <li v-for="respuesta in pregunta.respuestas" :key="respuesta">{{ respuesta }}</li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
-    <div class="cronometro">
-      <h2 id="timer">30</h2>
-    </div>
-
-    <div class="opcions">
-      <button class="boton-pequeño">Pregunta Anterior</button>
-    </div>
-
-    <div class="menu-administrador" style="background-color: white; padding: 20px; border-radius: 10px;">
-      <h2>Menú d'Administrador</h2>
-      <button class="admin-button">Editar Text o Imatge</button>
-      <button class="admin-button">Inserir Noves Preguntes</button>
-      <button class="admin-button">Borrar Preguntes</button>
-    </div>
   </body>
 </template>
 
 <script>
-  import { ref } from 'vue'
+
+export async function getPreguntes(){
+  const response = await fetch ('http://localhost:3000/getPreguntes')
+  const preguntes = await response.json();
+  return preguntes;
+}
+
+
 </script>
 
 <style>
@@ -74,7 +51,7 @@
   }
 
   .menu-administrador {
-    margin-top: 60px;
+    margin-top: 100px; 
     text-align: center; 
   }
 
@@ -95,24 +72,30 @@
     background-color: #7bec81; 
   }
 
-  .imatge-pregunta {
-    width: 100%; 
-    height: auto; 
-    max-height: 200px; 
-    display: block; 
-    margin: 0 auto; 
+  .preguntas-list {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
   }
 
-  .opcions {
-    margin-top: 45px;
-    display: flex;          
-    justify-content: center;
-    align-items: center;     
+  .preguntas-list h3 {
+    text-align: center;
+    color: #333;
   }
 
-  .justificado {
-    text-align: justify;
-    margin-left: 15px;
+  .preguntas-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .preguntas-list ul ul {
+    margin-left: 20px;
+  }
+
+  .preguntas-list li {
+    margin-bottom: 10px;
   }
 
   .header {

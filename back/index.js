@@ -68,30 +68,29 @@ app.post('/addPregunta', (req, res) => {
     }
 });
 
-// Actualizar una pregunta existente
-app.put('/updatePregunta/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const updatedPregunta = req.body;
+app.put('/updatePregunta', (req, res) => {
+    const id = parseInt(req.params.id); 
+    const updatedPregunta = req.body; 
 
     try {
-        const preguntas = leerPreguntas();
-        const preguntaIndex = preguntas.preguntes.findIndex(p => p.id === id);
+        const preguntas = leerPreguntas(); 
+        const pregunta = preguntas.preguntes.find(p => p.id === id);
 
-        if (preguntaIndex === -1) {
+        if (!pregunta) {
             return res.status(404).json({ error: 'Pregunta no encontrada' });
         }
 
-        preguntas.preguntes[preguntaIndex] = {
-            ...preguntas.preguntes[preguntaIndex],
-            ...updatedPregunta
-        };
+        // Actualiza solo los campos que vienen en el cuerpo de la solicitud
+        pregunta.pregunta = updatedPregunta.pregunta || pregunta.pregunta;
+        pregunta.respostes = updatedPregunta.respostes || pregunta.respostes;
 
-        guardarPreguntas(preguntas);
-        res.json(preguntas.preguntes[preguntaIndex]);
+        guardarPreguntas(preguntas); 
+        res.json(pregunta); 
     } catch (err) {
-        res.status(500).json({ error: 'Error al actualizar la pregunta' });
+        res.status(500).json({ error: 'Error al actualizar la pregunta' }); 
     }
 });
+
 
 // Eliminar una pregunta
 app.delete('/deletePregunta/:id', (req, res) => {
