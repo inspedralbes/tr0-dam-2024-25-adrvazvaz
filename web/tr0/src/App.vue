@@ -28,13 +28,22 @@
 
 <script>
 
-export async function getPreguntes(){
-  const response = await fetch ('http://localhost:3000/getPreguntes')
-  const preguntes = await response.json();
-  return preguntes;
-}
-
-
+export default {
+  data() {
+    return {
+      preguntas: [] 
+    };
+  },
+  created() {
+   
+    fetch('http://localhost:3000/getPreguntes')  
+      .then(response => response.json())  
+      .then(data => {
+        this.preguntas = data;  
+      })
+      .catch(error => console.error('Error fetching preguntas:', error));
+  }
+};
 </script>
 
 <style>
