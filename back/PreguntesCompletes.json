@@ -7,25 +7,24 @@
         {
           "id": 1,
           "resposta": "BMW",
-          "correcta": true
+          "imatge": "https://exemple.com/bmw.jpg"
         },
         {
           "id": 2,
           "resposta": "Mercedes-Benz",
-          "correcta": false
+          "imatge": "https://exemple.com/mercedes.jpg"
         },
         {
           "id": 3,
           "resposta": "Audi",
-          "correcta": false
+          "imatge": "https://exemple.com/audi.jpg"
         },
         {
           "id": 4,
           "resposta": "Lexus",
-          "correcta": false
+          "imatge": "https://exemple.com/lexus.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/bmw.jpg"
+      ]
     },
     {
       "id": 2,
@@ -34,25 +33,24 @@
         {
           "id": 1,
           "resposta": "Coca-Cola",
-          "correcta": true
+          "imatge": "https://exemple.com/coca-cola.jpg"
         },
         {
           "id": 2,
           "resposta": "Pepsi",
-          "correcta": false
+          "imatge": "https://exemple.com/pepsi.jpg"
         },
         {
           "id": 3,
           "resposta": "Fanta",
-          "correcta": false
+          "imatge": "https://exemple.com/fanta.jpg"
         },
         {
           "id": 4,
           "resposta": "Sprite",
-          "correcta": false
+          "imatge": "https://exemple.com/sprite.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/coca-cola.jpg"
+      ]
     },
     {
       "id": 3,
@@ -61,25 +59,24 @@
         {
           "id": 1,
           "resposta": "Apple",
-          "correcta": true
+          "imatge": "https://exemple.com/apple.jpg"
         },
         {
           "id": 2,
           "resposta": "Microsoft",
-          "correcta": false
+          "imatge": "https://exemple.com/microsoft.jpg"
         },
         {
           "id": 3,
           "resposta": "Samsung",
-          "correcta": false
+          "imatge": "https://exemple.com/samsung.jpg"
         },
         {
           "id": 4,
           "resposta": "Google",
-          "correcta": false
+          "imatge": "https://exemple.com/google.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/apple.jpg"
+      ]
     },
     {
       "id": 4,
@@ -88,25 +85,24 @@
         {
           "id": 1,
           "resposta": "Nike",
-          "correcta": true
+          "imatge": "https://exemple.com/nike.jpg"
         },
         {
           "id": 2,
           "resposta": "Adidas",
-          "correcta": false
+          "imatge": "https://exemple.com/adidas.jpg"
         },
         {
           "id": 3,
           "resposta": "Puma",
-          "correcta": false
+          "imatge": "https://exemple.com/puma.jpg"
         },
         {
           "id": 4,
           "resposta": "Reebok",
-          "correcta": false
+          "imatge": "https://exemple.com/reebok.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/nike.jpg"
+      ]
     },
     {
       "id": 5,
@@ -115,25 +111,24 @@
         {
           "id": 1,
           "resposta": "McDonald's",
-          "correcta": true
+          "imatge": "https://exemple.com/mcdonalds.jpg"
         },
         {
           "id": 2,
           "resposta": "Burger King",
-          "correcta": false
+          "imatge": "https://exemple.com/burgerking.jpg"
         },
         {
           "id": 3,
           "resposta": "KFC",
-          "correcta": false
+          "imatge": "https://exemple.com/kfc.jpg"
         },
         {
           "id": 4,
           "resposta": "Subway",
-          "correcta": false
+          "imatge": "https://exemple.com/subway.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/mcdonalds.jpg"
+      ]
     },
     {
       "id": 6,
@@ -142,25 +137,24 @@
         {
           "id": 1,
           "resposta": "Folgers",
-          "correcta": true
+          "imatge": "https://exemple.com/folgers.jpg"
         },
         {
           "id": 2,
           "resposta": "Nescafé",
-          "correcta": false
+          "imatge": "https://exemple.com/nescafe.jpg"
         },
         {
           "id": 3,
           "resposta": "Starbucks",
-          "correcta": false
+          "imatge": "https://exemple.com/starbucks.jpg"
         },
         {
           "id": 4,
           "resposta": "Lavazza",
-          "correcta": false
+          "imatge": "https://exemple.com/lavazza.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/folgers.jpg"
+      ]
     },
     {
       "id": 7,
@@ -169,25 +163,24 @@
         {
           "id": 1,
           "resposta": "Mazda",
-          "correcta": true
+          "imatge": "https://exemple.com/mazda.jpg"
         },
         {
           "id": 2,
           "resposta": "Ford",
-          "correcta": false
+          "imatge": "https://exemple.com/ford.jpg"
         },
         {
           "id": 3,
           "resposta": "Toyota",
-          "correcta": false
+          "imatge": "https://exemple.com/toyota.jpg"
         },
         {
           "id": 4,
           "resposta": "Honda",
-          "correcta": false
+          "imatge": "https://exemple.com/honda.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/mazda.jpg"
+      ]
     },
     {
       "id": 8,
@@ -196,25 +189,24 @@
         {
           "id": 1,
           "resposta": "Ivory",
-          "correcta": true
+          "imatge": "https://exemple.com/ivory.jpg"
         },
         {
           "id": 2,
           "resposta": "Dove",
-          "correcta": false
+          "imatge": "https://exemple.com/dove.jpg"
         },
         {
           "id": 3,
           "resposta": "Irish Spring",
-          "correcta": false
+          "imatge": "https://exemple.com/irishspring.jpg"
         },
         {
           "id": 4,
           "resposta": "Dial",
-          "correcta": false
+          "imatge": "https://exemple.com/dial.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/ivory.jpg"
+      ]
     },
     {
       "id": 9,
@@ -223,25 +215,24 @@
         {
           "id": 1,
           "resposta": "Sony",
-          "correcta": true
+          "imatge": "https://exemple.com/sony.jpg"
         },
         {
           "id": 2,
           "resposta": "Panasonic",
-          "correcta": false
+          "imatge": "https://exemple.com/panasonic.jpg"
         },
         {
           "id": 3,
           "resposta": "Philips",
-          "correcta": false
+          "imatge": "https://exemple.com/philips.jpg"
         },
         {
           "id": 4,
           "resposta": "LG",
-          "correcta": false
+          "imatge": "https://exemple.com/lg.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/sony.jpg"
+      ]
     },
     {
       "id": 10,
@@ -250,25 +241,24 @@
         {
           "id": 1,
           "resposta": "Rolex",
-          "correcta": true
+          "imatge": "https://exemple.com/rolex.jpg"
         },
         {
           "id": 2,
           "resposta": "Omega",
-          "correcta": false
+          "imatge": "https://exemple.com/omega.jpg"
         },
         {
           "id": 3,
           "resposta": "Tag Heuer",
-          "correcta": false
+          "imatge": "https://exemple.com/tagheuer.jpg"
         },
         {
           "id": 4,
           "resposta": "Breitling",
-          "correcta": false
+          "imatge": "https://exemple.com/breitling.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/rolex.jpg"
+      ]
     },
     {
       "id": 11,
@@ -277,106 +267,258 @@
         {
           "id": 1,
           "resposta": "Apple",
-          "correcta": false
+          "imatge": "https://exemple.com/apple.jpg"
         },
         {
           "id": 2,
           "resposta": "IBM",
-          "correcta": true
+          "imatge": "https://exemple.com/ibm.jpg"
         },
         {
           "id": 3,
           "resposta": "Nokia",
-          "correcta": false
+          "imatge": "https://exemple.com/nokia.jpg"
         },
         {
           "id": 4,
           "resposta": "Samsung",
-          "correcta": false
+          "imatge": "https://exemple.com/samsung.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/ibm.jpg"
+      ]
     },
     {
       "id": 12,
-      "pregunta": "Quina cadena de supermercats té el major nombre de botigues a nivell mundial?",
+      "pregunta": "Quin fabricant d'automòbils utilitza el lema 'Built Ford Tough'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Walmart",
-          "correcta": true
+          "resposta": "Ford",
+          "imatge": "https://exemple.com/ford.jpg"
         },
         {
           "id": 2,
-          "resposta": "Carrefour",
-          "correcta": false
+          "resposta": "Chevrolet",
+          "imatge": "https://exemple.com/chevrolet.jpg"
         },
         {
           "id": 3,
-          "resposta": "Lidl",
-          "correcta": false
+          "resposta": "Ram",
+          "imatge": "https://exemple.com/ram.jpg"
         },
         {
           "id": 4,
-          "resposta": "Aldi",
-          "correcta": false
+          "resposta": "Toyota",
+          "imatge": "https://exemple.com/toyota.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/walmart.jpg"
+      ]
     },
     {
       "id": 13,
-      "pregunta": "Quina marca de consoles va llançar el videojoc 'The Legend of Zelda'?",
+      "pregunta": "Quina marca de cosmètics utilitza el lema 'Because You're Worth It'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Nintendo",
-          "correcta": true
+          "resposta": "L'Oréal",
+          "imatge": "https://exemple.com/loreal.jpg"
         },
         {
           "id": 2,
-          "resposta": "Sony",
-          "correcta": false
+          "resposta": "Maybelline",
+          "imatge": "https://exemple.com/maybelline.jpg"
         },
         {
           "id": 3,
-          "resposta": "Microsoft",
-          "correcta": false
+          "resposta": "Revlon",
+          "imatge": "https://exemple.com/revlon.jpg"
         },
         {
           "id": 4,
-          "resposta": "Sega",
-          "correcta": false
+          "resposta": "CoverGirl",
+          "imatge": "https://exemple.com/covergirl.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/nintendo.jpg"
+      ]
     },
     {
       "id": 14,
-      "pregunta": "Quina empresa va fabricar el primer ordinador personal disponible per al gran públic?",
+      "pregunta": "Quina marca de vi utilitza el lema 'In Good Taste'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "IBM",
-          "correcta": true
+          "resposta": "Robert Mondavi",
+          "imatge": "https://exemple.com/robertmondavi.jpg"
         },
         {
           "id": 2,
-          "resposta": "Apple",
-          "correcta": false
+          "resposta": "Barefoot",
+          "imatge": "https://exemple.com/barefoot.jpg"
         },
         {
           "id": 3,
-          "resposta": "HP",
-          "correcta": false
+          "resposta": "Yellow Tail",
+          "imatge": "https://exemple.com/yellowtail.jpg"
         },
         {
           "id": 4,
-          "resposta": "Dell",
-          "correcta": false
+          "resposta": "Sutter Home",
+          "imatge": "https://exemple.com/sutterhome.jpg"
         }
-      ],
-      "imatge": "https://exemple.com/ibm-pc.jpg"
+      ]
+    },
+    {
+      "id": 15,
+      "pregunta": "Quina marca d'assegurances utilitza el lema 'Get a Piece of the Rock'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Prudential",
+          "imatge": "https://exemple.com/prudential.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "State Farm",
+          "imatge": "https://exemple.com/statefarm.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Allstate",
+          "imatge": "https://exemple.com/allstate.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Geico",
+          "imatge": "https://exemple.com/geico.jpg"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "pregunta": "Quina marca de gelat utilitza el lema 'The Ice Cream of the Future'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Häagen-Dazs",
+          "imatge": "https://exemple.com/haagen-dazs.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Ben & Jerry's",
+          "imatge": "https://exemple.com/benandjerrys.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Breyers",
+          "imatge": "https://exemple.com/breyers.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Dreyers",
+          "imatge": "https://exemple.com/dreyers.jpg"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "pregunta": "Quina marca de roba utilitza el lema 'Life is Good'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Life is Good",
+          "imatge": "https://exemple.com/lifeisgood.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "American Eagle",
+          "imatge": "https://exemple.com/americaneagle.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Hollister",
+          "imatge": "https://exemple.com/hollister.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Abercrombie",
+          "imatge": "https://exemple.com/abercrombie.jpg"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "pregunta": "Quina marca de sabó utilitza el lema 'Clean, Fresh and Pure'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Dial",
+          "imatge": "https://exemple.com/dial.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Softsoap",
+          "imatge": "https://exemple.com/softsoap.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Zest",
+          "imatge": "https://exemple.com/zest.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Irish Spring",
+          "imatge": "https://exemple.com/irishspring.jpg"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "pregunta": "Quina marca de tancaments utilitza el lema 'We're All About the Gear'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "REI",
+          "imatge": "https://exemple.com/rei.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Cabela's",
+          "imatge": "https://exemple.com/cabelas.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Bass Pro Shops",
+          "imatge": "https://exemple.com/bassproshops.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Academy Sports + Outdoors",
+          "imatge": "https://exemple.com/academy.jpg"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "pregunta": "Quina marca de carn utilitza el lema 'The Other White Meat'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Pork",
+          "imatge": "https://exemple.com/pork.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Beef",
+          "imatge": "https://exemple.com/beef.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Chicken",
+          "imatge": "https://exemple.com/chicken.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Turkey",
+          "imatge": "https://exemple.com/turkey.jpg"
+        }
+      ]
     }
   ]
 }

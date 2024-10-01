@@ -3,7 +3,7 @@
     <header>
       <div class="header" id="header">
         <div class="menu-administrador" style="background-color: white; padding: 20px; border-radius: 10px;">
-          <h2>Menú d'Administrador</h2>
+          <h2><mark>Menú d'Administrador</mark></h2>
           <button class="admin-button">Editar Text o Imatge</button>
           <button class="admin-button">Inserir Noves Preguntes</button>
           <button class="admin-button">Borrar Preguntes</button>
@@ -12,34 +12,35 @@
     </header>
 
     <div class="preguntas-list">
-      <h3>Preguntas del juego:</h3>
+      <h3><mark>Preguntas del juego:</mark></h3>
+      <br>
       <ul>
-        <li v-for="pregunta in preguntas" :key="pregunta.id">
-          <strong>{{ pregunta.pregunta }}</strong>
+        <li v-for="(pregunta, index) in preguntas" :key="pregunta.id" class="pregunta-item">
+          <strong>{{ index + 1 }}. {{ pregunta.pregunta }}</strong>
           <ul>
-            <li v-for="respuesta in pregunta.respuestas" :key="respuesta">{{ respuesta }}</li>
+            <li v-for="(respuesta, resIndex) in pregunta.respostes" :key="respuesta.id">
+              {{ String.fromCharCode(97 + resIndex) }}. {{ respuesta.resposta }}
+            </li>
           </ul>
         </li>
       </ul>
     </div>
-
   </body>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
-      preguntas: [] 
+      preguntas: []  
     };
   },
   created() {
-   
-    fetch('http://localhost:3000/getPreguntes')  
-      .then(response => response.json())  
+    fetch('http://localhost:3000/getPreguntes')
+      .then(response => response.json())
       .then(data => {
-        this.preguntas = data;  
+        console.log('Preguntas recibidas:', data.preguntes);  
+        this.preguntas = data.preguntes; 
       })
       .catch(error => console.error('Error fetching preguntas:', error));
   }
@@ -47,7 +48,6 @@ export default {
 </script>
 
 <style>
-  
   .menu-administrador {
     margin-top: 100px; 
     text-align: center; 
@@ -94,6 +94,18 @@ export default {
 
   .preguntas-list li {
     margin-bottom: 10px;
+  }
+
+  .pregunta-item {
+    margin-bottom: 15px; /* Espacio entre preguntas */
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde alrededor de cada pregunta */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo para mayor contraste */
+  }
+
+  .pregunta-item strong {
+    font-size: 1.1em; /* Tamaño de fuente más grande para las preguntas */
   }
 
   .header {
