@@ -2,33 +2,7 @@
   "preguntes": [
     {
       "id": 1,
-      "pregunta": "Quina marca de cotxes utilitza el lema 'The Ultimate Driving Machine'?",
-      "respostes": [
-        {
-          "id": 1,
-          "resposta": "BMW",
-          "imatge": "https://exemple.com/bmw.jpg"
-        },
-        {
-          "id": 2,
-          "resposta": "Mercedes-Benz",
-          "imatge": "https://exemple.com/mercedes.jpg"
-        },
-        {
-          "id": 3,
-          "resposta": "Audi",
-          "imatge": "https://exemple.com/audi.jpg"
-        },
-        {
-          "id": 4,
-          "resposta": "Lexus",
-          "imatge": "https://exemple.com/lexus.jpg"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "pregunta": "Quina marca de refresc utilitza el lema 'Taste the Feeling'?",
+      "pregunta": "Quina marca de refrescs va ser fundada el 1886 a Atlanta?",
       "respostes": [
         {
           "id": 1,
@@ -42,8 +16,8 @@
         },
         {
           "id": 3,
-          "resposta": "Fanta",
-          "imatge": "https://exemple.com/fanta.jpg"
+          "resposta": "Dr Pepper",
+          "imatge": "https://exemple.com/drpepper.jpg"
         },
         {
           "id": 4,
@@ -53,8 +27,34 @@
       ]
     },
     {
+      "id": 2,
+      "pregunta": "Quina marca d'automòbils és coneguda pel seu model 'Mustang'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Ford",
+          "imatge": "https://exemple.com/ford.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Chevrolet",
+          "imatge": "https://exemple.com/chevrolet.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Dodge",
+          "imatge": "https://exemple.com/dodge.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Toyota",
+          "imatge": "https://exemple.com/toyota.jpg"
+        }
+      ]
+    },
+    {
       "id": 3,
-      "pregunta": "Quina marca de tecnologia utilitza el lema 'Think Different'?",
+      "pregunta": "Quina marca de tecnologia va llançar el primer iPhone?",
       "respostes": [
         {
           "id": 1,
@@ -63,24 +63,24 @@
         },
         {
           "id": 2,
-          "resposta": "Microsoft",
-          "imatge": "https://exemple.com/microsoft.jpg"
-        },
-        {
-          "id": 3,
           "resposta": "Samsung",
           "imatge": "https://exemple.com/samsung.jpg"
         },
         {
+          "id": 3,
+          "resposta": "Nokia",
+          "imatge": "https://exemple.com/nokia.jpg"
+        },
+        {
           "id": 4,
-          "resposta": "Google",
-          "imatge": "https://exemple.com/google.jpg"
+          "resposta": "BlackBerry",
+          "imatge": "https://exemple.com/blackberry.jpg"
         }
       ]
     },
     {
       "id": 4,
-      "pregunta": "Quina marca de roba utilitza el lema 'Just Do It'?",
+      "pregunta": "Quina marca de roba esportiva utilitza el lema 'Just Do It'?",
       "respostes": [
         {
           "id": 1,
@@ -106,79 +106,79 @@
     },
     {
       "id": 5,
-      "pregunta": "Quina marca de menjar ràpid utilitza el lema 'I'm Lovin' It'?",
+      "pregunta": "Quin fabricant d'automòbils és conegut pel seu model 'Civic'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "McDonald's",
-          "imatge": "https://exemple.com/mcdonalds.jpg"
+          "resposta": "Honda",
+          "imatge": "https://exemple.com/honda.jpg"
         },
         {
           "id": 2,
-          "resposta": "Burger King",
-          "imatge": "https://exemple.com/burgerking.jpg"
+          "resposta": "Toyota",
+          "imatge": "https://exemple.com/toyota.jpg"
         },
         {
           "id": 3,
-          "resposta": "KFC",
-          "imatge": "https://exemple.com/kfc.jpg"
+          "resposta": "Mazda",
+          "imatge": "https://exemple.com/mazda.jpg"
         },
         {
           "id": 4,
-          "resposta": "Subway",
-          "imatge": "https://exemple.com/subway.jpg"
+          "resposta": "Nissan",
+          "imatge": "https://exemple.com/nissan.jpg"
         }
       ]
     },
     {
       "id": 6,
-      "pregunta": "Quina marca de cafè utilitza el lema 'The Best Part of Waking Up'?",
+      "pregunta": "Quina marca de cosmètics utilitza el lema 'Because You're Worth It'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Folgers",
-          "imatge": "https://exemple.com/folgers.jpg"
+          "resposta": "L'Oréal",
+          "imatge": "https://exemple.com/loreal.jpg"
         },
         {
           "id": 2,
-          "resposta": "Nescafé",
-          "imatge": "https://exemple.com/nescafe.jpg"
+          "resposta": "Maybelline",
+          "imatge": "https://exemple.com/maybelline.jpg"
         },
         {
           "id": 3,
-          "resposta": "Starbucks",
-          "imatge": "https://exemple.com/starbucks.jpg"
+          "resposta": "Revlon",
+          "imatge": "https://exemple.com/revlon.jpg"
         },
         {
           "id": 4,
-          "resposta": "Lavazza",
-          "imatge": "https://exemple.com/lavazza.jpg"
+          "resposta": "CoverGirl",
+          "imatge": "https://exemple.com/covergirl.jpg"
         }
       ]
     },
     {
       "id": 7,
-      "pregunta": "Quina marca de cotxes utilitza el lema 'Zoom-Zoom'?",
+      "pregunta": "Quin fabricant d'ordinadors utilitza el lema 'The Computer for the Rest of Us'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Mazda",
-          "imatge": "https://exemple.com/mazda.jpg"
+          "resposta": "Apple",
+          "imatge": "https://exemple.com/apple.jpg"
         },
         {
           "id": 2,
-          "resposta": "Ford",
-          "imatge": "https://exemple.com/ford.jpg"
+          "resposta": "Microsoft",
+          "imatge": "https://exemple.com/microsoft.jpg"
         },
         {
           "id": 3,
-          "resposta": "Toyota",
-          "imatge": "https://exemple.com/toyota.jpg"
+          "resposta": "IBM",
+          "imatge": "https://exemple.com/ibm.jpg"
         },
         {
           "id": 4,
-          "resposta": "Honda",
-          "imatge": "https://exemple.com/honda.jpg"
+          "resposta": "Dell",
+          "imatge": "https://exemple.com/dell.jpg"
         }
       ]
     },
@@ -210,136 +210,6 @@
     },
     {
       "id": 9,
-      "pregunta": "Quina marca d'electrònica utilitza el lema 'Empowering the Digital Revolution'?",
-      "respostes": [
-        {
-          "id": 1,
-          "resposta": "Sony",
-          "imatge": "https://exemple.com/sony.jpg"
-        },
-        {
-          "id": 2,
-          "resposta": "Panasonic",
-          "imatge": "https://exemple.com/panasonic.jpg"
-        },
-        {
-          "id": 3,
-          "resposta": "Philips",
-          "imatge": "https://exemple.com/philips.jpg"
-        },
-        {
-          "id": 4,
-          "resposta": "LG",
-          "imatge": "https://exemple.com/lg.jpg"
-        }
-      ]
-    },
-    {
-      "id": 10,
-      "pregunta": "Quina marca de rellotges utilitza el lema 'A Crown for Every Achievement'?",
-      "respostes": [
-        {
-          "id": 1,
-          "resposta": "Rolex",
-          "imatge": "https://exemple.com/rolex.jpg"
-        },
-        {
-          "id": 2,
-          "resposta": "Omega",
-          "imatge": "https://exemple.com/omega.jpg"
-        },
-        {
-          "id": 3,
-          "resposta": "Tag Heuer",
-          "imatge": "https://exemple.com/tagheuer.jpg"
-        },
-        {
-          "id": 4,
-          "resposta": "Breitling",
-          "imatge": "https://exemple.com/breitling.jpg"
-        }
-      ]
-    },
-    {
-      "id": 11,
-      "pregunta": "Quina empresa va llançar el primer telèfon mòbil amb pantalla tàctil?",
-      "respostes": [
-        {
-          "id": 1,
-          "resposta": "Apple",
-          "imatge": "https://exemple.com/apple.jpg"
-        },
-        {
-          "id": 2,
-          "resposta": "IBM",
-          "imatge": "https://exemple.com/ibm.jpg"
-        },
-        {
-          "id": 3,
-          "resposta": "Nokia",
-          "imatge": "https://exemple.com/nokia.jpg"
-        },
-        {
-          "id": 4,
-          "resposta": "Samsung",
-          "imatge": "https://exemple.com/samsung.jpg"
-        }
-      ]
-    },
-    {
-      "id": 12,
-      "pregunta": "Quin fabricant d'automòbils utilitza el lema 'Built Ford Tough'?",
-      "respostes": [
-        {
-          "id": 1,
-          "resposta": "Ford",
-          "imatge": "https://exemple.com/ford.jpg"
-        },
-        {
-          "id": 2,
-          "resposta": "Chevrolet",
-          "imatge": "https://exemple.com/chevrolet.jpg"
-        },
-        {
-          "id": 3,
-          "resposta": "Ram",
-          "imatge": "https://exemple.com/ram.jpg"
-        },
-        {
-          "id": 4,
-          "resposta": "Toyota",
-          "imatge": "https://exemple.com/toyota.jpg"
-        }
-      ]
-    },
-    {
-      "id": 13,
-      "pregunta": "Quina marca de cosmètics utilitza el lema 'Because You're Worth It'?",
-      "respostes": [
-        {
-          "id": 1,
-          "resposta": "L'Oréal",
-          "imatge": "https://exemple.com/loreal.jpg"
-        },
-        {
-          "id": 2,
-          "resposta": "Maybelline",
-          "imatge": "https://exemple.com/maybelline.jpg"
-        },
-        {
-          "id": 3,
-          "resposta": "Revlon",
-          "imatge": "https://exemple.com/revlon.jpg"
-        },
-        {
-          "id": 4,
-          "resposta": "CoverGirl",
-          "imatge": "https://exemple.com/covergirl.jpg"
-        }
-      ]
-    },
-    {
-      "id": 14,
       "pregunta": "Quina marca de vi utilitza el lema 'In Good Taste'?",
       "respostes": [
         {
@@ -365,33 +235,85 @@
       ]
     },
     {
-      "id": 15,
-      "pregunta": "Quina marca d'assegurances utilitza el lema 'Get a Piece of the Rock'?",
+      "id": 10,
+      "pregunta": "Quina marca de caramels utilitza el lema 'Taste the Rainbow'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Prudential",
-          "imatge": "https://exemple.com/prudential.jpg"
+          "resposta": "Skittles",
+          "imatge": "https://exemple.com/skittles.jpg"
         },
         {
           "id": 2,
-          "resposta": "State Farm",
-          "imatge": "https://exemple.com/statefarm.jpg"
+          "resposta": "M&M's",
+          "imatge": "https://exemple.com/mms.jpg"
         },
         {
           "id": 3,
-          "resposta": "Allstate",
-          "imatge": "https://exemple.com/allstate.jpg"
+          "resposta": "Starburst",
+          "imatge": "https://exemple.com/starburst.jpg"
         },
         {
           "id": 4,
-          "resposta": "Geico",
-          "imatge": "https://exemple.com/geico.jpg"
+          "resposta": "Trolli",
+          "imatge": "https://exemple.com/trolli.jpg"
         }
       ]
     },
     {
-      "id": 16,
+      "id": 11,
+      "pregunta": "Quina marca de maquillatge utilitza el lema 'The Power of Makeup'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Too Faced",
+          "imatge": "https://exemple.com/toofaced.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Maybelline",
+          "imatge": "https://exemple.com/maybelline.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "MAC Cosmetics",
+          "imatge": "https://exemple.com/mac.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "CoverGirl",
+          "imatge": "https://exemple.com/covergirl.jpg"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "pregunta": "Quina marca de xocolata utilitza el lema 'Melts in Your Mouth, Not in Your Hand'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "M&M's",
+          "imatge": "https://exemple.com/mms.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Hershey's",
+          "imatge": "https://exemple.com/hersheys.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Cadbury",
+          "imatge": "https://exemple.com/cadbury.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Nestlé",
+          "imatge": "https://exemple.com/nestle.jpg"
+        }
+      ]
+    },
+    {
+      "id": 13,
       "pregunta": "Quina marca de gelat utilitza el lema 'The Ice Cream of the Future'?",
       "respostes": [
         {
@@ -417,106 +339,184 @@
       ]
     },
     {
-      "id": 17,
-      "pregunta": "Quina marca de roba utilitza el lema 'Life is Good'?",
+      "id": 14,
+      "pregunta": "Quina marca de begudes energètiques utilitza el lema 'Red Bull Gives You Wings'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Life is Good",
-          "imatge": "https://exemple.com/lifeisgood.jpg"
+          "resposta": "Red Bull",
+          "imatge": "https://exemple.com/redbull.jpg"
         },
         {
           "id": 2,
-          "resposta": "American Eagle",
-          "imatge": "https://exemple.com/americaneagle.jpg"
+          "resposta": "Monster",
+          "imatge": "https://exemple.com/monster.jpg"
         },
         {
           "id": 3,
-          "resposta": "Hollister",
-          "imatge": "https://exemple.com/hollister.jpg"
+          "resposta": "Rockstar",
+          "imatge": "https://exemple.com/rockstar.jpg"
         },
         {
           "id": 4,
-          "resposta": "Abercrombie",
-          "imatge": "https://exemple.com/abercrombie.jpg"
+          "resposta": "Amp Energy",
+          "imatge": "https://exemple.com/amp.jpg"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "pregunta": "Quina marca de joguines és coneguda pel seu lema 'Play-Doh'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Play-Doh",
+          "imatge": "https://exemple.com/play-doh.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "LEGO",
+          "imatge": "https://exemple.com/lego.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Barbie",
+          "imatge": "https://exemple.com/barbie.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Fisher-Price",
+          "imatge": "https://exemple.com/fisher-price.jpg"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "pregunta": "Quina marca de supermercats és coneguda pel seu lema 'Save Money. Live Better.'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Walmart",
+          "imatge": "https://exemple.com/walmart.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Costco",
+          "imatge": "https://exemple.com/costco.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Target",
+          "imatge": "https://exemple.com/target.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Kroger",
+          "imatge": "https://exemple.com/kroger.jpg"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "pregunta": "Quina marca de gel utilitza el lema 'The Best a Man Can Get'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Gillette",
+          "imatge": "https://exemple.com/gillette.jpg"
+        },
+        {
+          "id": 2,
+          "resposta": "Schick",
+          "imatge": "https://exemple.com/schick.jpg"
+        },
+        {
+          "id": 3,
+          "resposta": "Bic",
+          "imatge": "https://exemple.com/bic.jpg"
+        },
+        {
+          "id": 4,
+          "resposta": "Harry's",
+          "imatge": "https://exemple.com/harrys.jpg"
         }
       ]
     },
     {
       "id": 18,
-      "pregunta": "Quina marca de sabó utilitza el lema 'Clean, Fresh and Pure'?",
+      "pregunta": "Quina marca de refrescs és coneguda per les seves variants 'Diet' i 'Zero Sugar'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Dial",
-          "imatge": "https://exemple.com/dial.jpg"
+          "resposta": "Coca-Cola",
+          "imatge": "https://exemple.com/coca-cola.jpg"
         },
         {
           "id": 2,
-          "resposta": "Softsoap",
-          "imatge": "https://exemple.com/softsoap.jpg"
+          "resposta": "Pepsi",
+          "imatge": "https://exemple.com/pepsi.jpg"
         },
         {
           "id": 3,
-          "resposta": "Zest",
-          "imatge": "https://exemple.com/zest.jpg"
+          "resposta": "Fanta",
+          "imatge": "https://exemple.com/fanta.jpg"
         },
         {
           "id": 4,
-          "resposta": "Irish Spring",
-          "imatge": "https://exemple.com/irishspring.jpg"
+          "resposta": "Sprite",
+          "imatge": "https://exemple.com/sprite.jpg"
         }
       ]
     },
     {
       "id": 19,
-      "pregunta": "Quina marca de tancaments utilitza el lema 'We're All About the Gear'?",
+      "pregunta": "Quina marca d'electrodomèstics és famosa per les seves neveres i rentadores?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "REI",
-          "imatge": "https://exemple.com/rei.jpg"
+          "resposta": "Whirlpool",
+          "imatge": "https://exemple.com/whirlpool.jpg"
         },
         {
           "id": 2,
-          "resposta": "Cabela's",
-          "imatge": "https://exemple.com/cabelas.jpg"
+          "resposta": "LG",
+          "imatge": "https://exemple.com/lg.jpg"
         },
         {
           "id": 3,
-          "resposta": "Bass Pro Shops",
-          "imatge": "https://exemple.com/bassproshops.jpg"
+          "resposta": "Samsung",
+          "imatge": "https://exemple.com/samsung.jpg"
         },
         {
           "id": 4,
-          "resposta": "Academy Sports + Outdoors",
-          "imatge": "https://exemple.com/academy.jpg"
+          "resposta": "Bosch",
+          "imatge": "https://exemple.com/bosch.jpg"
         }
       ]
     },
     {
       "id": 20,
-      "pregunta": "Quina marca de carn utilitza el lema 'The Other White Meat'?",
+      "pregunta": "Quina marca de llapis és coneguda pel seu lema 'The Best Pencil in the World'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Pork",
-          "imatge": "https://exemple.com/pork.jpg"
+          "resposta": "Faber-Castell",
+          "imatge": "https://exemple.com/fabercastell.jpg"
         },
         {
           "id": 2,
-          "resposta": "Beef",
-          "imatge": "https://exemple.com/beef.jpg"
+          "resposta": "Dixon Ticonderoga",
+          "imatge": "https://exemple.com/dixon.jpg"
         },
         {
           "id": 3,
-          "resposta": "Chicken",
-          "imatge": "https://exemple.com/chicken.jpg"
+          "resposta": "Papermate",
+          "imatge": "https://exemple.com/papermate.jpg"
         },
         {
           "id": 4,
-          "resposta": "Turkey",
-          "imatge": "https://exemple.com/turkey.jpg"
+          "resposta": "Crayola",
+          "imatge": "https://exemple.com/crayola.jpg"
         }
       ]
     }
