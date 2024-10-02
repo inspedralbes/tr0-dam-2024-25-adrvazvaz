@@ -1,8 +1,10 @@
 <template>
+
   <body>
+
     <header>
       <div class="header" id="header">
-        <div class="menu-administrador" style="background-color: white; padding: 20px; border-radius: 10px;">
+        <div class="menu-administrador">
           <h2><mark>Menú d'Administrador</mark></h2>
           <button class="admin-button">Editar Text o Imatge</button>
           <button class="admin-button">Inserir Noves Preguntes</button>
@@ -12,11 +14,11 @@
     </header>
 
     <div class="preguntas-list">
-      <h3><mark>Preguntas del juego:</mark></h3>
+      <h3><mark>Preguntes del Joc:</mark></h3>
       <br>
       <ul>
         <li v-for="(pregunta, index) in preguntas" :key="pregunta.id" class="pregunta-item">
-          <strong>{{ index + 1 }}. {{ pregunta.pregunta }}</strong>
+          <strong class="bold">{{ index + 1 }}. {{ pregunta.pregunta }}</strong>
           <ul>
             <li v-for="(respuesta, resIndex) in pregunta.respostes" :key="respuesta.id">
               {{ String.fromCharCode(97 + resIndex) }}. {{ respuesta.resposta }}
@@ -25,7 +27,9 @@
         </li>
       </ul>
     </div>
+
   </body>
+
 </template>
 
 <script>
@@ -36,7 +40,7 @@ export default {
     };
   },
   created() {
-    fetch('http://localhost:3000/getPreguntes')
+    fetch('http://localhost:21211/getPreguntes')
       .then(response => response.json())
       .then(data => {
         console.log('Preguntas recibidas:', data.preguntes);  
@@ -47,119 +51,98 @@ export default {
 };
 </script>
 
+
 <style>
-  .menu-administrador {
-    margin-top: 100px; 
-    text-align: center; 
-  }
+ .menu-administrador {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  width: 250px; 
+  z-index: 1000;
+}
 
-  .admin-button {
-    display: block;         
-    width: 200px;           
-    margin: 10px auto;    
-    padding: 10px;        
-    font-size: 16px;       
-    border: none;          
-    background-color: #4CAF50; 
-    color: white;         
-    border-radius: 5px;    
-    cursor: pointer;        
-  }
+.admin-button {
+  display: block;
+  width: 100%; 
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  .admin-button:hover {
-    background-color: #7bec81; 
-  }
+.admin-button:hover {
+  background-color: #7bec81;
+}
 
+.preguntas-list {
+  margin-left: 300px; /* Espacio para el menú */
+  background-color: #f9f9f9;
+  padding: 40px;
+  width: 70vw; /* Ajuste del ancho basado en el tamaño de la pantalla */
+  max-width: 600px; /* Máximo tamaño para pantallas muy grandes */
+  min-width: 600px; /* Mínimo tamaño para pantallas pequeñas */
+  border-radius: 10px;
+}
+
+.preguntas-list h3 {
+  text-align: center;
+  color: #333;
+}
+
+.preguntas-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.preguntas-list ul ul {
+  margin-left: 20px;
+}
+
+.preguntas-list li {
+  margin-bottom: 10px;
+}
+
+.pregunta-item {
+  margin-bottom: 15px; 
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.pregunta-item strong {
+  font-size: 1.2em; 
+  font-weight: bold;
+}
+
+body {
+  background-color: rgb(40, 81, 194);
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
   .preguntas-list {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin: 20px auto;
-    width: 80%;
-    border-radius: 10px;
-  }
-
-  .preguntas-list h3 {
-    text-align: center;
-    color: #333;
-  }
-
-  .preguntas-list ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .preguntas-list ul ul {
-    margin-left: 20px;
-  }
-
-  .preguntas-list li {
-    margin-bottom: 10px;
-  }
-
-  .pregunta-item {
-    margin-bottom: 15px; /* Espacio entre preguntas */
-    padding: 10px;
-    border: 1px solid #ccc; /* Borde alrededor de cada pregunta */
-    border-radius: 5px; /* Bordes redondeados */
-    background-color: #f9f9f9; /* Color de fondo para mayor contraste */
-  }
-
-  .pregunta-item strong {
-    font-size: 1.1em; /* Tamaño de fuente más grande para las preguntas */
-  }
-
-  .header {
-    background-color: rgb(22, 22, 180);
-    color: rgb(180, 186, 235);
-    width: 100%;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    margin-top: 20px;
-    margin: auto;
-  }
-
-  body {
-    background-color: rgb(40, 81, 194);
-  }
-
-  .main {
-    background-color: rgb(3, 147, 214);
-    color: white;
-    width: 80%;
-    border-radius: 10px;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    margin-top: 20px;
-    margin: auto;
+    width: 90vw; /* Se ajusta más en pantallas pequeñas */
+    margin-left: 0; /* Elimina el margen para el menú en pantallas pequeñas */
     padding: 20px;
   }
 
-  table {
-    width: 100%;
-    margin: auto;
-  }
-
-  .td_pregunta {
-    height: 100px;
+  .menu-administrador {
+    position: relative;
+    width: 90vw; /* Ajusta el ancho del menú para pantallas pequeñas */
+    margin: 0 auto;
     text-align: center;
   }
+}
 
-  .td-resposta {
-    width: 50%;
-    text-align: center;
-  }
-
-  button {
-    padding: 20px 40px; 
-    font-size: 20px; 
-    border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #45a049;
-  }
 </style>
