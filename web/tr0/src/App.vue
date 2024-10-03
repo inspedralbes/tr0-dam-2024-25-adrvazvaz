@@ -5,16 +5,17 @@
     <header>
       <div class="header" id="header">
         <div class="menu-administrador">
-          <h2><mark>Menú d'Administrador</mark></h2>
+          <h2><mark>Menú d'Administrador</mark></h2><hr>
           <button class="admin-button">Editar Text o Imatge</button>
           <button class="admin-button">Inserir Noves Preguntes</button>
           <button class="admin-button">Borrar Preguntes</button>
+          <button class="admin-button">Stats</button>
         </div>
       </div>
     </header>
 
     <div class="preguntas-list">
-      <h3><mark>Preguntes del Joc:</mark></h3>
+      <h3><mark>Preguntes del Joc:</mark></h3><br><hr>
       <br>
       <ul>
         <li v-for="(pregunta, index) in preguntas" :key="pregunta.id" class="pregunta-item">
@@ -82,12 +83,12 @@ export default {
 }
 
 .preguntas-list {
-  margin-left: 300px; /* Espacio para el menú */
+  margin-left: 300px; 
   background-color: #f9f9f9;
   padding: 40px;
-  width: 70vw; /* Ajuste del ancho basado en el tamaño de la pantalla */
-  max-width: 600px; /* Máximo tamaño para pantallas muy grandes */
-  min-width: 600px; /* Mínimo tamaño para pantallas pequeñas */
+  width: 70vw; 
+  max-width: 600px; 
+  min-width: 600px; 
   border-radius: 10px;
 }
 
@@ -129,17 +130,16 @@ body {
   padding: 0;
 }
 
-/* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
   .preguntas-list {
-    width: 90vw; /* Se ajusta más en pantallas pequeñas */
-    margin-left: 0; /* Elimina el margen para el menú en pantallas pequeñas */
+    width: 90vw; 
+    margin-left: 0; 
     padding: 20px;
   }
 
   .menu-administrador {
     position: relative;
-    width: 90vw; /* Ajusta el ancho del menú para pantallas pequeñas */
+    width: 90vw; 
     margin: 0 auto;
     text-align: center;
   }
