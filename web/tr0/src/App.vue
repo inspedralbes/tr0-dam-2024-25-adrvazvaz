@@ -1,14 +1,12 @@
 <template>
-
   <body>
-
     <header>
       <div class="header" id="header">
         <div class="menu-administrador">
           <h2><mark>Menú d'Administrador</mark></h2><hr>
-          <button class="admin-button">Editar Text o Imatge</button>
-          <button class="admin-button">Inserir Noves Preguntes</button>
-          <button class="admin-button">Borrar Preguntes</button>
+          <button class="admin-button" @click="agregarPregunta(nuevaPregunta)">Agregar Pregunta</button>
+          <button class="admin-button" @click="actualizarPregunta(pregunta.id, preguntaModificada)">Actualizar Pregunta</button>
+          <button class="admin-button" @click=" eliminarPregunta(pregunta.id)">Eliminar Pregunta</button>
           <button class="admin-button">Stats</button>
         </div>
       </div>
@@ -28,29 +26,95 @@
         </li>
       </ul>
     </div>
-
   </body>
-
 </template>
+
+
+
 
 <script>
 export default {
   data() {
     return {
-      preguntas: []  
+      preguntas: [],
+      nuevaPregunta: {
+        id: null,
+        pregunta: '',
+        respostes: []
+      },
+      preguntaActualizada: {
+        id: null,
+        pregunta: '',
+        respostes: []
+      }
     };
   },
   created() {
+    // Obtener las preguntas
     fetch('http://localhost:21211/getPreguntes')
       .then(response => response.json())
       .then(data => {
-        console.log('Preguntas recibidas:', data.preguntes);  
-        this.preguntas = data.preguntes; 
+        this.preguntas = data.preguntes;
       })
       .catch(error => console.error('Error fetching preguntas:', error));
+  },
+  methods: {
+    // Agregar nueva pregunta
+    agregarPregunta() {
+      console.log('Datos a enviar:', this.nuevaPregunta); 
+      fetch('http://localhost:21211/addPregunta', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.nuevaPregunta)
+      })
+      .then(response => response.json())
+      .then(data => {
+        this.preguntas.push(data); 
+        this.nuevaPregunta = { id: null, pregunta: '', respostes: [] }; 
+      })
+      .catch(error => console.error('Error agregando la pregunta:', error));
+    },
+    
+    // Actualizar pregunta
+    actualizarPregunta() {
+      fetch(`http://localhost:21211/updatePregunta/${this.preguntaActualizada.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.preguntaActualizada)
+      })
+      .then(response => response.json())
+      .then(data => {
+        const index = this.preguntas.findIndex(p => p.id === data.id);
+        if (index !== -1) {
+          this.preguntas.splice(index, 1, data); 
+        }
+        this.preguntaActualizada = { id: null, pregunta: '', respostes: [] };
+      })
+      .catch(error => console.error('Error actualizando la pregunta:', error));
+    },
+
+    // Eliminar pregunta
+    eliminarPregunta(id) {
+      fetch(`http://localhost:21211/deletePregunta/${id}`, {
+        method: 'DELETE'
+      })
+      .then(() => {
+        this.preguntas = this.preguntas.filter(pregunta => pregunta.id !== id);
+      })
+      .catch(error => console.error('Error eliminando la pregunta:', error));
+    }
   }
 };
 </script>
+
+
+
+
+
 
 
 <style>
