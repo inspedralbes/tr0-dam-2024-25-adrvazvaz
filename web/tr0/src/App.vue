@@ -33,6 +33,8 @@
 
 
 <script>
+import { getPreguntas, addPregunta, updatePregunta, deletePregunta } from './fetch.js';
+
 export default {
   data() {
     return {
@@ -50,70 +52,56 @@ export default {
     };
   },
   created() {
-    // Obtener las preguntas
-    fetch('http://localhost:21211/getPreguntes')
-      .then(response => response.json())
-      .then(data => {
-        this.preguntas = data.preguntes;
-      })
-      .catch(error => console.error('Error fetching preguntas:', error));
+    this.cargarPreguntas();
   },
   methods: {
+    // Cargar las preguntas desde el servidor
+    async cargarPreguntas() {
+      try {
+        const data = await getPreguntas();
+        this.preguntas = data.preguntes;
+      } catch (error) {
+        console.error('Error fetching preguntas:', error);
+      }
+    },
+    
     // Agregar nueva pregunta
-    agregarPregunta() {
-      console.log('Datos a enviar:', this.nuevaPregunta); 
-      fetch('http://localhost:21211/addPregunta', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.nuevaPregunta)
-      })
-      .then(response => response.json())
-      .then(data => {
-        this.preguntas.push(data); 
-        this.nuevaPregunta = { id: null, pregunta: '', respostes: [] }; 
-      })
-      .catch(error => console.error('Error agregando la pregunta:', error));
+    async agregarPregunta() {
+      try {
+        const nuevaPregunta = await addPregunta(this.nuevaPregunta);
+        this.preguntas.push(nuevaPregunta);
+        this.nuevaPregunta = { id: null, pregunta: '', respostes: [] }; // Reinicia el formulario
+      } catch (error) {
+        console.error('Error agregando la pregunta:', error);
+      }
     },
     
     // Actualizar pregunta
-    actualizarPregunta() {
-      fetch(`http://localhost:21211/updatePregunta/${this.preguntaActualizada.id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(this.preguntaActualizada)
-      })
-      .then(response => response.json())
-      .then(data => {
-        const index = this.preguntas.findIndex(p => p.id === data.id);
+    async actualizarPregunta() {
+      try {
+        const preguntaActualizada = await updatePregunta(this.preguntaActualizada.id, this.preguntaActualizada);
+        const index = this.preguntas.findIndex(p => p.id === preguntaActualizada.id);
         if (index !== -1) {
-          this.preguntas.splice(index, 1, data); 
+          this.preguntas.splice(index, 1, preguntaActualizada);
         }
-        this.preguntaActualizada = { id: null, pregunta: '', respostes: [] };
-      })
-      .catch(error => console.error('Error actualizando la pregunta:', error));
+        this.preguntaActualizada = { id: null, pregunta: '', respostes: [] }; // Reinicia el formulario
+      } catch (error) {
+        console.error('Error actualizando la pregunta:', error);
+      }
     },
-
+    
     // Eliminar pregunta
-    eliminarPregunta(id) {
-      fetch(`http://localhost:21211/deletePregunta/${id}`, {
-        method: 'DELETE'
-      })
-      .then(() => {
+    async eliminarPregunta(id) {
+      try {
+        await deletePregunta(id);
         this.preguntas = this.preguntas.filter(pregunta => pregunta.id !== id);
-      })
-      .catch(error => console.error('Error eliminando la pregunta:', error));
+      } catch (error) {
+        console.error('Error eliminando la pregunta:', error);
+      }
     }
   }
 };
 </script>
-
-
-
-
 
 
 
