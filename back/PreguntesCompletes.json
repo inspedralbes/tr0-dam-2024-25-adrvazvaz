@@ -539,6 +539,28 @@
           "correcta": false
         }
       ]
+    },
+    {
+      "pregunta": "¿Cuál es la capital de Francia?",
+      "respostes": [
+        {
+          "resposta": "París",
+          "id": 1
+        },
+        {
+          "resposta": "Londres",
+          "id": 2
+        },
+        {
+          "resposta": "Berlín",
+          "id": 3
+        },
+        {
+          "resposta": "Madrid",
+          "id": 4
+        }
+      ],
+      "id": 21
     }
   ]
 }
