@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs'); 
 const app = express();
-const port = 21211;
+const port = 3000;
 
 app.use(express.json());
 app.use(cors());
@@ -89,20 +89,27 @@ app.post('/addPregunta', (req, res) => {
 
 
 // Actualizar pregunta
-app.put('/updatePregunta', (req, res) => {
+app.put('/updatePregunta/:id', (req, res) => { 
+    const id = parseInt(req.params.id);
     const updatedPregunta = req.body; 
+    console.log("ID recibido para actualizar pregunta")
+    console.log(id); 
 
     try {
         const preguntas = leerPreguntas(); 
-        const pregunta = preguntas.preguntes.find(p => p.id === id);
-
+        
+        console.log("preguntas leidas"); 
+        const pregunta = preguntas.findIndex(p => p.id === id); // peta en esta linea, sseguir debugando y controlando el error. 
+        console.log("empezando a buscar si el Id propuesto esta disponible ");
         if (!pregunta) {
             return res.status(404).json({ error: 'Pregunta no encontrada' });
         }
 
         // Actualiza solo los campos que vienen en el cuerpo de la solicitud
-        pregunta.pregunta = updatedPregunta.pregunta || pregunta.pregunta;
-        pregunta.respostes = updatedPregunta.respostes || pregunta.respostes;
+        pregunta.pregunta = updatedPregunta.pregunta;
+        pregunta.respostes = updatedPregunta.respostes;
+
+        console.log('Pregunta actualizada:', pregunta);
 
         guardarPreguntas(preguntas); 
         res.json(pregunta); 
@@ -110,6 +117,7 @@ app.put('/updatePregunta', (req, res) => {
         res.status(500).json({ error: 'Error al actualizar la pregunta' }); 
     }
 });
+
 
 // Eliminar una pregunta
 app.delete('/deletePregunta/:id', (req, res) => {
