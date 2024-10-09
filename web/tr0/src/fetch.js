@@ -1,6 +1,6 @@
 // services/preguntaService.js
 
-const API_URL = 'http://localhost:21211';
+const API_URL = 'http://a21adrvazvaz.dam.inspedralbes.cat:21211';
 
 // Obtener todas las preguntas
 export async function getPreguntas() {
