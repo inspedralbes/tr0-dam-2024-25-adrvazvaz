@@ -1,14 +1,13 @@
-// services/preguntaService.js
-
-const API_URL = 'http://localhost:21211';
+const API_URL = 'http://dam.inspedralbes.cat:21211';
 
 // Obtener todas las preguntas
 export async function getPreguntas() {
   const response = await fetch(`${API_URL}/getPreguntes`);
   if (!response.ok) {
-    throw new Error('Error al obtener las preguntas');
+    throw new Error('Error al obtener preguntas');
   }
-  return await response.json();
+  const data = await response.json();
+  return data.preguntes; 
 }
 
 // Agregar nueva pregunta
@@ -28,13 +27,13 @@ export async function addPregunta(pregunta) {
 }
 
 // Actualizar pregunta
-export async function updatePregunta(id, pregunta) {
+export async function updatePregunta(id, preguntaActualizada) {
   const response = await fetch(`${API_URL}/updatePregunta/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(pregunta)
+    body: JSON.stringify(preguntaActualizada)
   });
 
   if (!response.ok) {

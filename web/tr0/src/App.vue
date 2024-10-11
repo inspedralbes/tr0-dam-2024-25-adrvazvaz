@@ -3,110 +3,170 @@
     <header>
       <div class="header" id="header">
         <div class="menu-administrador">
-          <h2><mark>Menú d'Administrador</mark></h2><hr>
-          <button class="admin-button" @click="agregarPregunta(nuevaPregunta)">Agregar Pregunta</button>
-          <button class="admin-button" @click="actualizarPregunta(pregunta.id, preguntaModificada)">Actualizar Pregunta</button>
-          <button class="admin-button" @click=" eliminarPregunta(pregunta.id)">Eliminar Pregunta</button>
+          <h2><mark>Menú d'Administrador</mark></h2>
+          <hr />
+          <button class="admin-button" @click="abrirModal('agregar')">Agregar Pregunta</button>
+          <button class="admin-button" @click="abrirModal('eliminar')">Eliminar Pregunta</button>
+          <button class="admin-button" @click="abrirModal('actualizar')">Actualizar Pregunta</button>
           <button class="admin-button">Stats</button>
         </div>
       </div>
     </header>
 
     <div class="preguntas-list">
-      <h3><mark>Preguntes del Joc:</mark></h3><br><hr>
-      <br>
+      <h3><mark>Preguntes del Joc:</mark></h3>
+      <hr />
       <ul>
         <li v-for="(pregunta, index) in preguntas" :key="pregunta.id" class="pregunta-item">
           <strong class="bold">{{ index + 1 }}. {{ pregunta.pregunta }}</strong>
           <ul>
-            <li v-for="(respuesta, resIndex) in pregunta.respostes" :key="respuesta.id">
+            <li v-for="(respuesta, resIndex) in pregunta.respostes" :key="respuesta.id" class="respuesta-item">
               {{ String.fromCharCode(97 + resIndex) }}. {{ respuesta.resposta }}
             </li>
           </ul>
         </li>
       </ul>
     </div>
+
+    <!-- Modal para Agregar, Actualizar y Eliminar -->
+    <div v-if="mostrarModal" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="cerrarModal">&times;</span>
+
+        <!-- Modal para Agregar -->
+        <div v-if="modalModo === 'agregar'">
+          <h3>Agregar Nueva Pregunta</h3>
+          <input v-model="nuevaPregunta.pregunta" placeholder="Introduce la pregunta" />
+          <div v-for="(respuesta, index) in nuevaPregunta.respostes" :key="index">
+            <input
+              v-model="nuevaPregunta.respostes[index].resposta"
+              :placeholder="'Introduce la respuesta ' + (index + 1)"
+            />
+          </div>
+          <button @click="agregarPregunta">Guardar Pregunta</button>
+        </div>
+
+        <!-- Modal para Actualizar -->
+        <div v-if="modalModo === 'actualizar'">
+          <h3>Actualizar Pregunta</h3>
+          <select v-model="preguntaSeleccionadaId" @change="cargarPregunta">
+            <option disabled value="">Selecciona una pregunta</option>
+            <option v-for="pregunta in preguntas" :key="pregunta.id" :value="pregunta.id">
+              {{ pregunta.pregunta }}
+            </option>
+          </select>
+
+          <div v-if="preguntaActualizada">
+            <input v-model="preguntaActualizada.pregunta" placeholder="Actualiza la pregunta" />
+            <div v-for="(respuesta, index) in preguntaActualizada.respostes" :key="index">
+              <input
+                v-model="preguntaActualizada.respostes[index].resposta"
+                :placeholder="'Actualiza la respuesta ' + (index + 1)"
+              />
+            </div>
+            <button @click="actualizarPregunta">Actualizar Pregunta</button>
+          </div>
+        </div>
+
+        <!-- Modal para Eliminar -->
+        <div v-if="modalModo === 'eliminar'">
+          <h3>Eliminar Pregunta</h3>
+          <select v-model="preguntaSeleccionadaId" @change="cargarPregunta">
+            <option disabled value="">Selecciona una pregunta</option>
+            <option v-for="pregunta in preguntas" :key="pregunta.id" :value="pregunta.id">
+              {{ pregunta.pregunta }}
+            </option>
+          </select>
+          <div v-if="preguntaActualizada">
+            <p><strong>¿Deseas eliminar la pregunta?</strong></p>
+            <p>{{ preguntaActualizada.pregunta }}</p>
+            <button @click="eliminarPregunta(preguntaSeleccionadaId)">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </template>
 
-
-
-
 <script>
-import { getPreguntas, addPregunta, updatePregunta, deletePregunta } from './fetch.js';
+import { getPreguntas, addPregunta, deletePregunta, updatePregunta } from './fetch.js';
 
 export default {
   data() {
     return {
       preguntas: [],
-      nuevaPregunta: {
-        id: null,
-        pregunta: '',
-        respostes: []
-      },
-      preguntaActualizada: {
-        id: null,
-        pregunta: '',
-        respostes: []
-      }
+      mostrarModal: false,
+      modalModo: '',
+      nuevaPregunta: { pregunta: '', respostes: [{ resposta: '' }, { resposta: '' }, { resposta: '' }, { resposta: '' }] },
+      preguntaSeleccionadaId: null,
+      preguntaActualizada: { pregunta: '', respostes: [{ resposta: '' }, { resposta: '' }, { resposta: '' }, { resposta: '' }] },
     };
   },
-  created() {
-    this.cargarPreguntas();
+  async mounted() {
+    await this.cargarPreguntas(); // Cargar preguntas al iniciar el componente
   },
   methods: {
-    // Cargar las preguntas desde el servidor
     async cargarPreguntas() {
       try {
-        const data = await getPreguntas();
-        this.preguntas = data.preguntes;
+        this.preguntas = await getPreguntas();
       } catch (error) {
-        console.error('Error fetching preguntas:', error);
+        console.error('Error al cargar preguntas:', error);
       }
     },
-    
-    // Agregar nueva pregunta
+    abrirModal(modo) {
+      this.modalModo = modo;
+      this.mostrarModal = true;
+      if (modo === 'actualizar' || modo === 'eliminar') {
+        this.preguntaActualizada = { pregunta: '', respostes: [{ resposta: '' }, { resposta: '' }, { resposta: '' }, { resposta: '' }] };
+      }
+    },
+    cerrarModal() {
+      this.mostrarModal = false;
+      this.preguntaSeleccionadaId = null;  // Limpia la selección de la pregunta
+    },
     async agregarPregunta() {
       try {
-        const nuevaPregunta = await addPregunta(this.nuevaPregunta);
-        this.preguntas.push(nuevaPregunta);
-        this.nuevaPregunta = { id: null, pregunta: '', respostes: [] }; // Reinicia el formulario
+        await addPregunta(this.nuevaPregunta);
+        this.nuevaPregunta = { pregunta: '', respostes: [{ resposta: '' }, { resposta: '' }, { resposta: '' }, { resposta: '' }] };
+        await this.cargarPreguntas(); // Recargar preguntas después de agregar
+        this.cerrarModal();
       } catch (error) {
-        console.error('Error agregando la pregunta:', error);
+        console.error('Error al agregar pregunta:', error);
       }
     },
-    
-    // Actualizar pregunta
+    async cargarPregunta() {
+      const pregunta = this.preguntas.find(p => p.id === this.preguntaSeleccionadaId);
+      if (pregunta) {
+        this.preguntaActualizada = {
+          pregunta: pregunta.pregunta,
+          respostes: pregunta.respostes.map(respuesta => ({ resposta: respuesta.resposta })) // Solo copia las respuestas
+        };
+      }
+    },
     async actualizarPregunta() {
       try {
-        const preguntaActualizada = await updatePregunta(this.preguntaActualizada.id, this.preguntaActualizada);
-        const index = this.preguntas.findIndex(p => p.id === preguntaActualizada.id);
-        if (index !== -1) {
-          this.preguntas.splice(index, 1, preguntaActualizada);
-        }
-        this.preguntaActualizada = { id: null, pregunta: '', respostes: [] }; // Reinicia el formulario
+        await updatePregunta(this.preguntaSeleccionadaId, this.preguntaActualizada);
+        await this.cargarPreguntas(); // Recargar preguntas después de actualizar
+        this.cerrarModal();
       } catch (error) {
-        console.error('Error actualizando la pregunta:', error);
+        console.error('Error al actualizar pregunta:', error);
       }
     },
-    
-    // Eliminar pregunta
     async eliminarPregunta(id) {
       try {
         await deletePregunta(id);
-        this.preguntas = this.preguntas.filter(pregunta => pregunta.id !== id);
+        await this.cargarPreguntas(); // Recargar preguntas después de eliminar
+        this.cerrarModal();
       } catch (error) {
-        console.error('Error eliminando la pregunta:', error);
+        console.error('Error al eliminar pregunta:', error);
       }
     }
   }
 };
 </script>
 
-
-
 <style>
- .menu-administrador {
+.menu-administrador {
   position: fixed;
   top: 20px;
   left: 20px;
@@ -165,14 +225,19 @@ export default {
 .pregunta-item {
   margin-bottom: 15px; 
   padding: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #1a1818;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: white; /* Fondo blanco */
 }
 
 .pregunta-item strong {
   font-size: 1.2em; 
   font-weight: bold;
+  color: black; /* Texto negro */
+}
+
+.respuesta-item {
+  color: black; /* Texto negro para respuestas */
 }
 
 body {
@@ -182,19 +247,54 @@ body {
   padding: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .preguntas-list {
-    width: 90vw; 
-    margin-left: 0; 
-    padding: 20px;
+    margin-left: 0; /* Sin margen en móviles */
+    width: auto; 
+    max-width: 100%; 
+    padding: 20px; 
   }
 
   .menu-administrador {
-    position: relative;
-    width: 90vw; 
-    margin: 0 auto;
-    text-align: center;
+    position: static; 
+    margin: 0; 
+    width: 100%; 
+    padding: 20px; 
   }
 }
 
+.modal {
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
 </style>

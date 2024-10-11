@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const fs = require('fs'); 
 const app = express();
-const port = 3000;
+const port = 21211;
 
 app.use(express.json());
 app.use(cors());
@@ -11,6 +11,7 @@ app.use(cors());
 const leerPreguntas = () => {
     try {
         const data = fs.readFileSync('./PreguntesCompletes.json', 'utf8');
+        console.log("se han leido las preguntas");
         return JSON.parse(data); // Devuelve el objeto parseado
     } catch (err) {
         console.error('Error al leer el archivo JSON:', err);
@@ -20,25 +21,35 @@ const leerPreguntas = () => {
 
 // Guardar las preguntas en el archivo JSON
 const guardarPreguntas = (preguntas) => {
-    fs.writeFileSync('./PreguntesCompletes.json', JSON.stringify(preguntas, null, 2), 'utf8');
+    try {
+        fs.writeFileSync('./PreguntesCompletes.json', JSON.stringify(preguntas, null, 2), 'utf8');
+        console.log('Preguntas guardadas correctamente');
+    } catch (error) {
+        console.error('Error al guardar preguntas:', error);
+    }
 };
 
 // PARA LA WEB PORQUE SALEN LAS RESPUESTAS
 app.get('/getPreguntes', (req, res) => {
     try {
-        const preguntas = leerPreguntas(); // Llamar a la función para obtener los datos
+        const preguntas = leerPreguntas(); 
+        console.log("se han leido las preguntas");
         res.json(preguntas);
+        console.log("se han enviado las preguntas");
     } catch (err) {
         console.error('Error al leer o parsear el archivo:', err);
         res.status(500).json({ error: 'Error al leer el archivo' });
     }
 });
 
+
+
 // PARA LA APP ANDROID SIN LAS RESPUESTAS CORRECTAS 
 app.get('/getPreguntesAndoridApp', (req, res) => {
     
     try {
         const preguntas = leerPreguntas(); 
+        console.log("se han leido las preguntas");
         const preguntasSinCorrectas = preguntas.preguntes.map(pregunta => ({
             id: pregunta.id,
             pregunta: pregunta.pregunta,
@@ -49,7 +60,8 @@ app.get('/getPreguntesAndoridApp', (req, res) => {
             imatge: pregunta.imatge
         }));
 
-        res.json(preguntasSinCorrectas); // Envía la respuesta correctamente
+        res.json(preguntasSinCorrectas);
+        console.log("se han enviado las preguntas");
     } catch (err) {
         console.error('Error al leer o parsear el archivo:', err);
         res.status(500).json({ error: 'Error al parsear el archivo JSON' });
@@ -80,43 +92,61 @@ app.post('/addPregunta', (req, res) => {
         console.log('se han generados los IDs para las respuestas');
         preguntas.preguntes.push(newPregunta); // Agregar la nueva pregunta a la lista
         guardarPreguntas(preguntas); // Guardar las preguntas actualizadas
+        console.log("preguntas guardadas")
         res.status(201).json(newPregunta); // Enviar la nueva pregunta como respuesta
+        console.log('se ha agregado la pregunta');
     } catch (err) {
         console.error('Error al guardar la pregunta:', err);
         res.status(500).json({ error: 'Error al guardar la pregunta' });
     }
 });
 
-
 // Actualizar pregunta
-app.put('/updatePregunta/:id', (req, res) => { 
+app.put('/updatePregunta/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    const updatedPregunta = req.body; 
-    console.log("ID recibido para actualizar pregunta")
-    console.log(id); 
+    const nuevaPregunta = req.body; 
+
+    if (!nuevaPregunta.pregunta || !Array.isArray(nuevaPregunta.respostes) || nuevaPregunta.respostes.length !== 4) {
+        return res.status(400).json({ error: 'La pregunta debe tener un texto y exactamente 4 respuestas' });
+    }
 
     try {
-        const preguntas = leerPreguntas(); 
-        
-        console.log("preguntas leidas"); 
-        const pregunta = preguntas.findIndex(p => p.id === id); // peta en esta linea, sseguir debugando y controlando el error. 
-        console.log("empezando a buscar si el Id propuesto esta disponible ");
-        if (!pregunta) {
+        const preguntas = leerPreguntas();
+        const preguntaIndex = preguntas.preguntes.findIndex(p => p.id === id);
+
+        if (preguntaIndex === -1) {
             return res.status(404).json({ error: 'Pregunta no encontrada' });
         }
 
-        // Actualiza solo los campos que vienen en el cuerpo de la solicitud
-        pregunta.pregunta = updatedPregunta.pregunta;
-        pregunta.respostes = updatedPregunta.respostes;
-
-        console.log('Pregunta actualizada:', pregunta);
+        // Actualizamos la pregunta encontrada con los nuevos datos
+        preguntas.preguntes[preguntaIndex].pregunta = nuevaPregunta.pregunta;
+        preguntas.preguntes[preguntaIndex].respostes = nuevaPregunta.respostes.map((resposta, index) => ({
+            id: index + 1, // Asegurar que las respuestas tienen IDs correctos
+            resposta: resposta.resposta
+        }));
 
         guardarPreguntas(preguntas); 
-        res.json(pregunta); 
+        console.log('Pregunta actualizada correctamente');
+        res.status(200).json(preguntas.preguntes[preguntaIndex]); // Enviamos la pregunta actualizada como respuesta
     } catch (err) {
-        res.status(500).json({ error: 'Error al actualizar la pregunta' }); 
+        console.error('Error al actualizar la pregunta:', err);
+        res.status(500).json({ error: 'Error al actualizar la pregunta' });
     }
 });
+
+
+//funcion para cuando se apliquen cambios en el json, se actualizen los id, es decir.. si se elimina 
+//la pregunta con id 2 que la 3 pase a ser la 2 y asi sucesivamente en el json
+const actualizarId = (preguntas) => {
+    leerPreguntas();
+    for (let i = 0; i < preguntas.preguntes.length; i++) {
+        preguntas.preguntes[i].id = i + 1;
+    }
+    guardarPreguntas(preguntas);
+    console.log("IDs de preguntas actualizados");
+
+    return preguntas; 
+};
 
 
 // Eliminar una pregunta
@@ -132,15 +162,18 @@ app.delete('/deletePregunta/:id', (req, res) => {
         }
 
         preguntas.preguntes.splice(preguntaIndex, 1);
+        actualizarId(preguntas);
+        console.log("Id's de preguntas actualizados")
         guardarPreguntas(preguntas);
-
+        console.log("preguntas guardadas correctamente")
         res.status(204).send(); 
     } catch (err) {
+        console.error('Error al eliminar la pregunta:', err);
         res.status(500).json({ error: 'Error al eliminar la pregunta' });
     }
 });
 
 // Iniciar el servidor
 app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
+    console.log(`Servidor escuchando en http://dam.inspedralbes.cat:${port}`);
 });
