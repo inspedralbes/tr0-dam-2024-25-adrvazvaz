@@ -1,4 +1,6 @@
+
 const API_URL = 'http://dam.inspedralbes.cat:21211';
+
 
 // Obtener todas las preguntas
 export async function getPreguntas() {
