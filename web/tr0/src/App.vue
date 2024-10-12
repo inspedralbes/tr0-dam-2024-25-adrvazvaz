@@ -20,7 +20,8 @@
         <li v-for="(pregunta, index) in preguntas" :key="pregunta.id" class="pregunta-item">
           <strong class="bold">{{ index + 1 }}. {{ pregunta.pregunta }}</strong>
           <ul>
-            <li v-for="(respuesta, resIndex) in pregunta.respostes" :key="respuesta.id" class="respuesta-item">
+            <li v-for="(respuesta, resIndex) in pregunta.respostes" :key="respuesta.id" 
+                :class="{'respuesta-item': true, 'correcta': respuesta.correcta, 'incorrecta': !respuesta.correcta}">
               {{ String.fromCharCode(97 + resIndex) }}. {{ respuesta.resposta }}
             </li>
           </ul>
@@ -66,15 +67,10 @@
                 v-model="preguntaActualizada.respostes[index].resposta"
                 :placeholder="'Actualiza la respuesta ' + (index + 1)"
               />
-              <label>
-                <input type="radio" v-model="preguntaActualizada.correcta" :value="index" />
-                Correcta
-              </label>
             </div>
             <button @click="actualizarPregunta">Actualizar Pregunta</button>
           </div>
         </div>
-
 
         <!-- Modal para Eliminar -->
         <div v-if="modalModo === 'eliminar'">
@@ -147,21 +143,21 @@ export default {
       }
     },
     async cargarPregunta() {
-    const pregunta = this.preguntas.find(p => p.id === this.preguntaSeleccionadaId);
-    if (pregunta) {
-      this.preguntaActualizada = {
-        pregunta: pregunta.pregunta,
-        respostes: pregunta.respostes.map((respuesta, index) => ({
-          resposta: respuesta.resposta,
-          correcta: respuesta.correcta,
-          isCorrecta: respuesta.correcta // Esto es para determinar cuál es la correcta
-        })), // Copiar las respuestas
-        correcta: pregunta.respostes.findIndex(r => r.correcta) // Obtener el índice de la respuesta correcta
-      };
-    }
-  },
-  async actualizarPregunta() {
-    try {
+      const pregunta = this.preguntas.find(p => p.id === this.preguntaSeleccionadaId);
+      if (pregunta) {
+        this.preguntaActualizada = {
+          pregunta: pregunta.pregunta,
+          respostes: pregunta.respostes.map((respuesta, index) => ({
+            resposta: respuesta.resposta,
+            correcta: respuesta.correcta,
+            isCorrecta: respuesta.correcta // Esto es para determinar cuál es la correcta
+          })), // Copiar las respuestas
+          correcta: pregunta.respostes.findIndex(r => r.correcta) // Obtener el índice de la respuesta correcta
+        };
+      }
+    },
+    async actualizarPregunta() {
+      try {
         await updatePregunta(this.preguntaSeleccionadaId, this.preguntaActualizada);
         await this.cargarPreguntas(); // Recargar preguntas después de actualizar
         this.cerrarModal();
@@ -182,7 +178,6 @@ export default {
 };
 </script>
 
-
 <style>
 .menu-administrador {
   position: fixed;
@@ -193,6 +188,14 @@ export default {
   border-radius: 10px;
   width: 250px; 
   z-index: 1000;
+}
+
+.respuesta-item.correcta {
+  color: green;
+}
+
+.respuesta-item.incorrecta {
+  color: red;
 }
 
 .admin-button {
@@ -214,52 +217,46 @@ export default {
 
 .preguntas-list {
   margin-left: 300px; 
-  background-color: #f9f9f9;
+  background-color: black;
   padding: 40px;
   width: 70vw; 
   max-width: 600px; 
-  min-width: 300px; 
-  margin-top: 20px;
+  color: white; 
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.pregunta-item, .respuesta-item {
-  margin-bottom: 20px;
-  color: black;
-}
-
-
-.bold {
-  font-weight: bold;
 }
 
 .modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   position: fixed;
-  top: 0;
+  z-index: 1000;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
+  color: black;
 }
 
 .modal-content {
   background-color: white;
+  margin: 15% auto;
   padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 600px;
-  color:black;
+  border: 1px solid #888;
+  width: 80%; 
+  max-width: 500px; 
 }
 
 .close {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 24px;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
   cursor: pointer;
 }
 </style>

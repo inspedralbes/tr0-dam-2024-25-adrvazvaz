@@ -141,12 +141,6 @@ app.put('/updatePregunta/:id', (req, res) => {
         return res.status(400).json({ error: 'La pregunta debe tener un texto y exactamente 4 respuestas' });
     }
 
-    // Comprobar que hay una respuesta correcta
-    const correctaRespuesta = nuevaPregunta.respostes.find(res => res.correcta);
-    if (!correctaRespuesta) {
-        return res.status(400).json({ error: 'Debes marcar una respuesta como correcta' });
-    }
-
     try {
         const preguntas = leerPreguntas();
         const preguntaIndex = preguntas.preguntes.findIndex(p => p.id === id);
