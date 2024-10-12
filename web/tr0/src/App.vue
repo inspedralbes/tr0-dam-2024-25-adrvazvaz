@@ -42,10 +42,13 @@
               v-model="nuevaPregunta.respostes[index].resposta"
               :placeholder="'Introduce la respuesta ' + (index + 1)"
             />
+            <label>
+              <input type="radio" v-model="nuevaPregunta.correcta" :value="index" />
+              Correcta
+            </label>
           </div>
           <button @click="agregarPregunta">Guardar Pregunta</button>
         </div>
-
         <!-- Modal para Actualizar -->
         <div v-if="modalModo === 'actualizar'">
           <h3>Actualizar Pregunta</h3>
@@ -63,10 +66,15 @@
                 v-model="preguntaActualizada.respostes[index].resposta"
                 :placeholder="'Actualiza la respuesta ' + (index + 1)"
               />
+              <label>
+                <input type="radio" v-model="preguntaActualizada.correcta" :value="index" />
+                Correcta
+              </label>
             </div>
             <button @click="actualizarPregunta">Actualizar Pregunta</button>
           </div>
         </div>
+
 
         <!-- Modal para Eliminar -->
         <div v-if="modalModo === 'eliminar'">
@@ -97,9 +105,9 @@ export default {
       preguntas: [],
       mostrarModal: false,
       modalModo: '',
-      nuevaPregunta: { pregunta: '', respostes: [{ resposta: '' }, { resposta: '' }, { resposta: '' }, { resposta: '' }] },
+      nuevaPregunta: { pregunta: '', respostes: [{ respuesta: '' }, { respuesta: '' }, { respuesta: '' }, { respuesta: '' }], correcta: null },
       preguntaSeleccionadaId: null,
-      preguntaActualizada: { pregunta: '', respostes: [{ resposta: '' }, { resposta: '' }, { resposta: '' }, { resposta: '' }] },
+      preguntaActualizada: { pregunta: '', respostes: [{ respuesta: '' }, { respuesta: '' }, { respuesta: '' }, { respuesta: '' }], correcta: null },
     };
   },
   async mounted() {
@@ -117,7 +125,7 @@ export default {
       this.modalModo = modo;
       this.mostrarModal = true;
       if (modo === 'actualizar' || modo === 'eliminar') {
-        this.preguntaActualizada = { pregunta: '', respostes: [{ resposta: '' }, { resposta: '' }, { resposta: '' }, { resposta: '' }] };
+        this.preguntaActualizada = { pregunta: '', respostes: [{ respuesta: '' }, { respuesta: '' }, { respuesta: '' }, { respuesta: '' }], correcta: null };
       }
     },
     cerrarModal() {
@@ -126,8 +134,12 @@ export default {
     },
     async agregarPregunta() {
       try {
+        // Establecer la respuesta correcta en función de la opción seleccionada
+        this.nuevaPregunta.respostes.forEach((respuesta, index) => {
+          respuesta.correcta = (this.nuevaPregunta.correcta === index);
+        });
         await addPregunta(this.nuevaPregunta);
-        this.nuevaPregunta = { pregunta: '', respostes: [{ resposta: '' }, { resposta: '' }, { resposta: '' }, { resposta: '' }] };
+        this.nuevaPregunta = { pregunta: '', respostes: [{ respuesta: '' }, { respuesta: '' }, { respuesta: '' }, { respuesta: '' }], correcta: null };
         await this.cargarPreguntas(); // Recargar preguntas después de agregar
         this.cerrarModal();
       } catch (error) {
@@ -135,16 +147,21 @@ export default {
       }
     },
     async cargarPregunta() {
-      const pregunta = this.preguntas.find(p => p.id === this.preguntaSeleccionadaId);
-      if (pregunta) {
-        this.preguntaActualizada = {
-          pregunta: pregunta.pregunta,
-          respostes: pregunta.respostes.map(respuesta => ({ resposta: respuesta.resposta })) // Solo copia las respuestas
-        };
-      }
-    },
-    async actualizarPregunta() {
-      try {
+    const pregunta = this.preguntas.find(p => p.id === this.preguntaSeleccionadaId);
+    if (pregunta) {
+      this.preguntaActualizada = {
+        pregunta: pregunta.pregunta,
+        respostes: pregunta.respostes.map((respuesta, index) => ({
+          resposta: respuesta.resposta,
+          correcta: respuesta.correcta,
+          isCorrecta: respuesta.correcta // Esto es para determinar cuál es la correcta
+        })), // Copiar las respuestas
+        correcta: pregunta.respostes.findIndex(r => r.correcta) // Obtener el índice de la respuesta correcta
+      };
+    }
+  },
+  async actualizarPregunta() {
+    try {
         await updatePregunta(this.preguntaSeleccionadaId, this.preguntaActualizada);
         await this.cargarPreguntas(); // Recargar preguntas después de actualizar
         this.cerrarModal();
@@ -164,6 +181,7 @@ export default {
   }
 };
 </script>
+
 
 <style>
 .menu-administrador {
@@ -200,101 +218,48 @@ export default {
   padding: 40px;
   width: 70vw; 
   max-width: 600px; 
-  min-width: 600px; 
+  min-width: 300px; 
+  margin-top: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.preguntas-list h3 {
-  text-align: center;
-  color: #333;
+.pregunta-item, .respuesta-item {
+  margin-bottom: 20px;
+  color: black;
 }
 
-.preguntas-list ul {
-  list-style-type: none;
-  padding: 0;
-}
 
-.preguntas-list ul ul {
-  margin-left: 20px;
-}
-
-.preguntas-list li {
-  margin-bottom: 10px;
-}
-
-.pregunta-item {
-  margin-bottom: 15px; 
-  padding: 15px;
-  border: 1px solid #1a1818;
-  border-radius: 5px;
-  background-color: white; /* Fondo blanco */
-}
-
-.pregunta-item strong {
-  font-size: 1.2em; 
+.bold {
   font-weight: bold;
-  color: black; /* Texto negro */
-}
-
-.respuesta-item {
-  color: black; /* Texto negro para respuestas */
-}
-
-body {
-  background-color: rgb(40, 81, 194);
-  font-family: 'Courier New', Courier, monospace;
-  margin: 0;
-  padding: 0;
-}
-
-@media (max-width: 600px) {
-  .preguntas-list {
-    margin-left: 0; /* Sin margen en móviles */
-    width: auto; 
-    max-width: 100%; 
-    padding: 20px; 
-  }
-
-  .menu-administrador {
-    position: static; 
-    margin: 0; 
-    width: 100%; 
-    padding: 20px; 
-  }
 }
 
 .modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
-  z-index: 1001;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
+  background-color: white;
   padding: 20px;
-  border: 1px solid #888;
+  border-radius: 10px;
   width: 80%;
-  max-width: 500px;
-  border-radius: 10px; /* Bordes redondeados */
+  max-width: 600px;
+  color:black;
 }
 
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
   cursor: pointer;
 }
 </style>

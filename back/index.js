@@ -33,9 +33,21 @@ const guardarPreguntas = (preguntas) => {
 app.get('/getPreguntes', (req, res) => {
     try {
         const preguntas = leerPreguntas(); 
-        console.log("se han leido las preguntas");
-        res.json(preguntas);
-        console.log("se han enviado las preguntas");
+        console.log("Se han leído las preguntas");
+
+        // Incluye las respuestas correctas
+        const preguntasConRespuestasCorrectas = preguntas.preguntes.map(pregunta => ({
+            id: pregunta.id,
+            pregunta: pregunta.pregunta,
+            respostes: pregunta.respostes.map(resposta => ({
+                id: resposta.id,
+                resposta: resposta.resposta,
+                correcta: resposta.correcta // Incluir información de si la respuesta es correcta
+            }))
+        }));
+
+        res.json(preguntasConRespuestasCorrectas);
+        console.log("Se han enviado las preguntas con respuestas correctas");
     } catch (err) {
         console.error('Error al leer o parsear el archivo:', err);
         res.status(500).json({ error: 'Error al leer el archivo' });
@@ -43,39 +55,53 @@ app.get('/getPreguntes', (req, res) => {
 });
 
 
+// PARA LA APP ANDROID SIN LAS RESPUESTAS CORRECTAS Y QUE SE ENVIA DE UNA EN UNA PREGUNTA 
+let currentQuestionIndex = 0; // Agrega un índice global para las preguntas
 
-// PARA LA APP ANDROID SIN LAS RESPUESTAS CORRECTAS 
-app.get('/getPreguntesAndoridApp', (req, res) => {
-    
+app.get('/getPreguntesAndroidApp', (req, res) => {
     try {
-        const preguntas = leerPreguntas(); 
-        console.log("se han leido las preguntas");
-        const preguntasSinCorrectas = preguntas.preguntes.map(pregunta => ({
-            id: pregunta.id,
-            pregunta: pregunta.pregunta,
-            respostes: pregunta.respostes.map(resposta => ({
-                id: resposta.id, 
-                resposta: resposta.resposta
-            })),
-            imatge: pregunta.imatge
-        }));
+        const preguntas = leerPreguntas();
+        console.log("Se han leído las preguntas");
 
-        res.json(preguntasSinCorrectas);
-        console.log("se han enviado las preguntas");
+        // Asegúrate de que el índice no exceda la longitud de las preguntas
+        if (currentQuestionIndex >= preguntas.preguntes.length) {
+            return res.status(404).json({ error: 'No hay más preguntas disponibles' });
+        }
+
+        const pregunta = {
+            id: preguntas.preguntes[currentQuestionIndex].id,
+            pregunta: preguntas.preguntes[currentQuestionIndex].pregunta,
+            respostes: preguntas.preguntes[currentQuestionIndex].respostes.map(resposta => ({
+                id: resposta.id,
+                resposta: resposta.resposta
+            }))
+        };
+
+        currentQuestionIndex++; // Incrementa el índice para la próxima pregunta
+        res.json(pregunta);
+        console.log(`Se ha enviado la pregunta ${pregunta}`);
     } catch (err) {
         console.error('Error al leer o parsear el archivo:', err);
         res.status(500).json({ error: 'Error al parsear el archivo JSON' });
     }
 });
 
+
 // CREATE DE LA PARTE CRUD EN LA WEB, PARA PODER AÑADIR NUEVAS PREGUNTAS FUNCIONA
 app.post('/addPregunta', (req, res) => {
     const newPregunta = req.body; // Obtener los datos de la nueva pregunta del cuerpo de la solicitud
     console.log('Nueva pregunta:', newPregunta);
+    
     if (!newPregunta.pregunta || !Array.isArray(newPregunta.respostes) || newPregunta.respostes.length !== 4) {
         return res.status(400).json({ error: 'La pregunta debe tener un texto y exactamente 4 respuestas' });
     }
-    // Generar un nuevo ID para la pregunta
+
+    // Comprobar que hay una respuesta correcta
+    const correctaRespuesta = newPregunta.respostes.find(res => res.correcta);
+    if (!correctaRespuesta) {
+        return res.status(400).json({ error: 'Debes marcar una respuesta como correcta' });
+    }
+
     try {
         const preguntas = leerPreguntas();
         console.log('se han leído las preguntas');
@@ -85,14 +111,18 @@ app.post('/addPregunta', (req, res) => {
 
         newPregunta.id = newPreguntaId; // Asignar el nuevo ID a la pregunta
         console.log('se ha generado un nuevo ID');
-        // Generar IDs para respuestas
+
+        // Generar IDs para respuestas y mantener la propiedad correcta
         for (let i = 0; i < newPregunta.respostes.length; i++) {
             newPregunta.respostes[i].id = i + 1; // Asignar un ID a cada respuesta
+            // Asegurarse de que la respuesta correcta se mantiene
+            newPregunta.respostes[i].correcta = newPregunta.respostes[i].correcta || false;
         }
         console.log('se han generados los IDs para las respuestas');
+
         preguntas.preguntes.push(newPregunta); // Agregar la nueva pregunta a la lista
         guardarPreguntas(preguntas); // Guardar las preguntas actualizadas
-        console.log("preguntas guardadas")
+        console.log("preguntas guardadas");
         res.status(201).json(newPregunta); // Enviar la nueva pregunta como respuesta
         console.log('se ha agregado la pregunta');
     } catch (err) {
@@ -102,12 +132,19 @@ app.post('/addPregunta', (req, res) => {
 });
 
 // Actualizar pregunta
+// Actualizar pregunta
 app.put('/updatePregunta/:id', (req, res) => {
     const id = parseInt(req.params.id);
-    const nuevaPregunta = req.body; 
+    const nuevaPregunta = req.body;
 
     if (!nuevaPregunta.pregunta || !Array.isArray(nuevaPregunta.respostes) || nuevaPregunta.respostes.length !== 4) {
         return res.status(400).json({ error: 'La pregunta debe tener un texto y exactamente 4 respuestas' });
+    }
+
+    // Comprobar que hay una respuesta correcta
+    const correctaRespuesta = nuevaPregunta.respostes.find(res => res.correcta);
+    if (!correctaRespuesta) {
+        return res.status(400).json({ error: 'Debes marcar una respuesta como correcta' });
     }
 
     try {
@@ -119,13 +156,17 @@ app.put('/updatePregunta/:id', (req, res) => {
         }
 
         // Actualizamos la pregunta encontrada con los nuevos datos
-        preguntas.preguntes[preguntaIndex].pregunta = nuevaPregunta.pregunta;
-        preguntas.preguntes[preguntaIndex].respostes = nuevaPregunta.respostes.map((resposta, index) => ({
-            id: index + 1, // Asegurar que las respuestas tienen IDs correctos
-            resposta: resposta.resposta
-        }));
+        preguntas.preguntes[preguntaIndex] = {
+            id: id, // Mantener el mismo ID
+            pregunta: nuevaPregunta.pregunta,
+            respostes: nuevaPregunta.respostes.map((resposta, index) => ({
+                id: index + 1, // Asegurar que las respuestas tienen IDs correctos
+                resposta: resposta.resposta,
+                correcta: resposta.correcta || false // Mantener la propiedad correcta
+            }))
+        };
 
-        guardarPreguntas(preguntas); 
+        guardarPreguntas(preguntas);
         console.log('Pregunta actualizada correctamente');
         res.status(200).json(preguntas.preguntes[preguntaIndex]); // Enviamos la pregunta actualizada como respuesta
     } catch (err) {
@@ -133,6 +174,9 @@ app.put('/updatePregunta/:id', (req, res) => {
         res.status(500).json({ error: 'Error al actualizar la pregunta' });
     }
 });
+
+
+
 
 
 //funcion para cuando se apliquen cambios en el json, se actualizen los id, es decir.. si se elimina 

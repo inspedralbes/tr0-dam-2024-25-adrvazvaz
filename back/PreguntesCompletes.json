@@ -6,19 +6,23 @@
       "respostes": [
         {
           "id": 1,
-          "resposta": "Rolex"
+          "resposta": "Rolex",
+          "correcta": true
         },
         {
           "id": 2,
-          "resposta": "Casio"
+          "resposta": "Casio",
+          "correcta": false
         },
         {
           "id": 3,
-          "resposta": "Omega"
+          "resposta": "Omega",
+          "correcta": false
         },
         {
           "id": 4,
-          "resposta": "Tag Heuer"
+          "resposta": "Tag Heuer",
+          "correcta": false
         }
       ]
     },
@@ -80,19 +84,23 @@
       "respostes": [
         {
           "id": 1,
-          "resposta": "Nike"
+          "resposta": "Nike",
+          "correcta": false
         },
         {
           "id": 2,
-          "resposta": "Adidas"
+          "resposta": "Adidas",
+          "correcta": true
         },
         {
           "id": 3,
-          "resposta": "Puma"
+          "resposta": "Puma",
+          "correcta": false
         },
         {
           "id": 4,
-          "resposta": "Kelme"
+          "resposta": "Kelme",
+          "correcta": false
         }
       ]
     },
@@ -332,52 +340,182 @@
     },
     {
       "id": 14,
-      "pregunta": "Quina marca d'automòbils utilitza el lema 'The Power of Dreams'?",
+      "pregunta": "Quina marca d'automòbils utilitza el lema 'The Ultimate Driving Machine'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Toyota",
+          "resposta": "Audi",
           "correcta": false
         },
         {
           "id": 2,
-          "resposta": "Honda",
+          "resposta": "BMW",
           "correcta": true
         },
         {
           "id": 3,
-          "resposta": "Nissan",
+          "resposta": "Mercedes-Benz",
           "correcta": false
         },
         {
           "id": 4,
-          "resposta": "Ford",
+          "resposta": "Volkswagen",
           "correcta": false
         }
       ]
     },
     {
       "id": 15,
-      "pregunta": "Quina marca de xocolata utilitza el lema 'Melts in Your Mouth, Not in Your Hands'?",
+      "pregunta": "Quina marca de sabates esportives utilitza el lema 'Just Do It'?",
       "respostes": [
         {
           "id": 1,
-          "resposta": "Cadbury",
+          "resposta": "Puma",
           "correcta": false
         },
         {
           "id": 2,
-          "resposta": "Mars",
-          "correcta": true
+          "resposta": "Reebok",
+          "correcta": false
         },
         {
           "id": 3,
-          "resposta": "Hershey's",
+          "resposta": "Nike",
+          "correcta": true
+        },
+        {
+          "id": 4,
+          "resposta": "Asics",
+          "correcta": false
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "pregunta": "Quina marca de joguines és coneguda per la seva línia de blocs de construcció?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Lego",
+          "correcta": true
+        },
+        {
+          "id": 2,
+          "resposta": "Mattel",
+          "correcta": false
+        },
+        {
+          "id": 3,
+          "resposta": "Fisher-Price",
           "correcta": false
         },
         {
           "id": 4,
-          "resposta": "Nestlé",
+          "resposta": "Hasbro",
+          "correcta": false
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "pregunta": "Quina empresa és coneguda pel seu mètode de producció 'Just-in-Time'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Toyota",
+          "correcta": true
+        },
+        {
+          "id": 2,
+          "resposta": "Ford",
+          "correcta": false
+        },
+        {
+          "id": 3,
+          "resposta": "Volkswagen",
+          "correcta": false
+        },
+        {
+          "id": 4,
+          "resposta": "Honda",
+          "correcta": false
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "pregunta": "Quina empresa va llançar el primer ordinador personal?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "IBM",
+          "correcta": true
+        },
+        {
+          "id": 2,
+          "resposta": "Apple",
+          "correcta": false
+        },
+        {
+          "id": 3,
+          "resposta": "Microsoft",
+          "correcta": false
+        },
+        {
+          "id": 4,
+          "resposta": "Commodore",
+          "correcta": false
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "pregunta": "Quina marca de begudes és famosa per la seva 'Coca-Cola'?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Pepsi",
+          "correcta": false
+        },
+        {
+          "id": 2,
+          "resposta": "Dr Pepper",
+          "correcta": false
+        },
+        {
+          "id": 3,
+          "resposta": "Coca-Cola",
+          "correcta": true
+        },
+        {
+          "id": 4,
+          "resposta": "Sprite",
+          "correcta": false
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "pregunta": "Quina marca de televisors és coneguda per la seva tecnologia OLED?",
+      "respostes": [
+        {
+          "id": 1,
+          "resposta": "Samsung",
+          "correcta": false
+        },
+        {
+          "id": 2,
+          "resposta": "LG",
+          "correcta": true
+        },
+        {
+          "id": 3,
+          "resposta": "Sony",
+          "correcta": false
+        },
+        {
+          "id": 4,
+          "resposta": "Philips",
           "correcta": false
         }
       ]
