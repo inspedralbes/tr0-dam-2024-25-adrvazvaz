@@ -1,0 +1,18 @@
+android app
+                   server (node.js)              json amb preguntes
+vue (crud)
+
+
+- vue (hecho, falta funcionalidad con Javascript)       
+
+- andorid app (falta por hacer) 
+
+- server (falta hacer funcionalidad de TODO)
+    -CRUD de requerimientos
+
+VIERNES CLASE:
+    - Node server
+
+VIERNES TARDE: 
+    - Empezar android app
+

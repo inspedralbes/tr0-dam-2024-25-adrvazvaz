@@ -1,0 +1,205 @@
+{
+  "preguntes": [
+    {
+      "id": 1,
+      "pregunta": "Quina empresa és coneguda per les seves sabatilles esportives?",
+      "respostes": [
+        { "id": 1, "resposta": "Nike", "correcta": true },
+        { "id": 2, "resposta": "Adidas", "correcta": false },
+        { "id": 3, "resposta": "Reebok", "correcta": false },
+        { "id": 4, "resposta": "Puma", "correcta": false }
+      ]
+    },
+    {
+      "id": 2,
+      "pregunta": "Quina marca és famosa per les seves bosses de mà de luxe?",
+      "respostes": [
+        { "id": 1, "resposta": "Gucci", "correcta": true },
+        { "id": 2, "resposta": "Prada", "correcta": false },
+        { "id": 3, "resposta": "Chanel", "correcta": false },
+        { "id": 4, "resposta": "Louis Vuitton", "correcta": false }
+      ]
+    },
+    {
+      "id": 3,
+      "pregunta": "Quina marca de xocolata és coneguda per les seves barretes de xocolata?",
+      "respostes": [
+        { "id": 1, "resposta": "Mars", "correcta": true },
+        { "id": 2, "resposta": "Cadbury", "correcta": false },
+        { "id": 3, "resposta": "Nestlé", "correcta": false },
+        { "id": 4, "resposta": "Hershey", "correcta": false }
+      ]
+    },
+    {
+      "id": 4,
+      "pregunta": "Quina marca de vehicles és coneguda pel seu model 'Mustang'?",
+      "respostes": [
+        { "id": 1, "resposta": "Ford", "correcta": true },
+        { "id": 2, "resposta": "Chevrolet", "correcta": false },
+        { "id": 3, "resposta": "Dodge", "correcta": false },
+        { "id": 4, "resposta": "Toyota", "correcta": false }
+      ]
+    },
+    {
+      "id": 5,
+      "pregunta": "Quina empresa de tecnologia és famosa pels seus mòbils i tauletes?",
+      "respostes": [
+        { "id": 1, "resposta": "Apple", "correcta": true },
+        { "id": 2, "resposta": "Samsung", "correcta": false },
+        { "id": 3, "resposta": "Xiaomi", "correcta": false },
+        { "id": 4, "resposta": "Huawei", "correcta": false }
+      ]
+    },
+    {
+      "id": 6,
+      "pregunta": "Quina marca de cosmètics és famosa pel seu lema 'Because You're Worth It'?",
+      "respostes": [
+        { "id": 1, "resposta": "Revlon", "correcta": false },
+        { "id": 2, "resposta": "L'Oréal", "correcta": true },
+        { "id": 3, "resposta": "Maybelline", "correcta": false },
+        { "id": 4, "resposta": "CoverGirl", "correcta": false }
+      ]
+    },
+    {
+      "id": 7,
+      "pregunta": "Quina empresa és famosa pel seu producte 'iPhone'?",
+      "respostes": [
+        { "id": 1, "resposta": "Samsung", "correcta": false },
+        { "id": 2, "resposta": "Apple", "correcta": true },
+        { "id": 3, "resposta": "Google", "correcta": false },
+        { "id": 4, "resposta": "Nokia", "correcta": false }
+      ]
+    },
+    {
+      "id": 8,
+      "pregunta": "Quina marca de begudes és coneguda per la seva campanya publicitària 'Open Happiness'?",
+      "respostes": [
+        { "id": 1, "resposta": "Pepsi", "correcta": false },
+        { "id": 2, "resposta": "Coca-Cola", "correcta": true },
+        { "id": 3, "resposta": "Dr Pepper", "correcta": false },
+        { "id": 4, "resposta": "Fanta", "correcta": false }
+      ]
+    },
+    {
+      "id": 9,
+      "pregunta": "Quina marca d'electrònica és coneguda pel seu lema 'The Best a Man Can Get'?",
+      "respostes": [
+        { "id": 1, "resposta": "Gillette", "correcta": true },
+        { "id": 2, "resposta": "Schick", "correcta": false },
+        { "id": 3, "resposta": "Bic", "correcta": false },
+        { "id": 4, "resposta": "Dove", "correcta": false }
+      ]
+    },
+    {
+      "id": 10,
+      "pregunta": "Quina marca d'automòbils és coneguda pel seu model 'Camry'?",
+      "respostes": [
+        { "id": 1, "resposta": "Honda", "correcta": false },
+        { "id": 2, "resposta": "Nissan", "correcta": false },
+        { "id": 3, "resposta": "Toyota", "correcta": true },
+        { "id": 4, "resposta": "Mazda", "correcta": false }
+      ]
+    },
+    {
+      "id": 11,
+      "pregunta": "Quina marca de begudes energètiques és coneguda pel seu lema 'Red Bull Gives You Wings'?",
+      "respostes": [
+        { "id": 1, "resposta": "Monster Energy", "correcta": false },
+        { "id": 2, "resposta": "Rockstar", "correcta": false },
+        { "id": 3, "resposta": "Red Bull", "correcta": true },
+        { "id": 4, "resposta": "5-hour Energy", "correcta": false }
+      ]
+    },
+    {
+      "id": 12,
+      "pregunta": "Quina marca de menjar ràpid és famosa per les seves hamburgueses?",
+      "respostes": [
+        { "id": 1, "resposta": "KFC", "correcta": false },
+        { "id": 2, "resposta": "Burger King", "correcta": true },
+        { "id": 3, "resposta": "McDonald's", "correcta": false },
+        { "id": 4, "resposta": "Subway", "correcta": false }
+      ]
+    },
+    {
+      "id": 13,
+      "pregunta": "Quina marca d'electrònica és famosa per les seves càmeres DSLR?",
+      "respostes": [
+        { "id": 1, "resposta": "Canon", "correcta": true },
+        { "id": 2, "resposta": "Nikon", "correcta": false },
+        { "id": 3, "resposta": "Sony", "correcta": false },
+        { "id": 4, "resposta": "Fujifilm", "correcta": false }
+      ]
+    },
+    {
+      "id": 14,
+      "pregunta": "Quina marca d'electrònica és famosa pel seu sistema de so Dolby?",
+      "respostes": [
+        { "id": 1, "resposta": "Sony", "correcta": true },
+        { "id": 2, "resposta": "Bose", "correcta": false },
+        { "id": 3, "resposta": "JBL", "correcta": false },
+        { "id": 4, "resposta": "Pioneer", "correcta": false }
+      ]
+    },
+    {
+      "id": 15,
+      "pregunta": "Quina marca de moda és famosa pel seu lema 'Just Do It'?",
+      "respostes": [
+        { "id": 1, "resposta": "Nike", "correcta": true },
+        { "id": 2, "resposta": "Adidas", "correcta": false },
+        { "id": 3, "resposta": "Reebok", "correcta": false },
+        { "id": 4, "resposta": "Under Armour", "correcta": false }
+      ]
+    },
+    {
+      "id": 16,
+      "pregunta": "Quina marca de joguines és famosa per les seves figures d'acció?",
+      "respostes": [
+        { "id": 1, "resposta": "Hasbro", "correcta": true },
+        { "id": 2, "resposta": "Lego", "correcta": false },
+        { "id": 3, "resposta": "Fisher-Price", "correcta": false },
+        { "id": 4, "resposta": "Mattel", "correcta": false }
+      ]
+    },
+    {
+      "id": 17,
+      "pregunta": "Quina marca de cosmètics és coneguda pel seu lema 'The Ultimate in Luxury'?",
+      "respostes": [
+        { "id": 1, "resposta": "Chanel", "correcta": true },
+        { "id": 2, "resposta": "Dior", "correcta": false },
+        { "id": 3, "resposta": "Estee Lauder", "correcta": false },
+        { "id": 4, "resposta": "Lancôme", "correcta": false }
+      ]
+    },
+    {
+      "id": 18,
+      "pregunta": "Quina marca de productes de neteja és famosa per les seves etiquetes grogues?",
+      "respostes": [
+        { "id": 1, "resposta": "Tide", "correcta": true },
+        { "id": 2, "resposta": "Gain", "correcta": false },
+        { "id": 3, "resposta": "Arm & Hammer", "correcta": false },
+        { "id": 4, "resposta": "Persil", "correcta": false }
+      ]
+    },
+    {
+      "id": 19,
+      "pregunta": "Quina marca de begudes és coneguda pel seu lema 'Life is Good'?",
+      "respostes": [
+        { "id": 1, "resposta": "Coca-Cola", "correcta": false },
+        { "id": 2, "resposta": "Pepsi", "correcta": true },
+        { "id": 3, "resposta": "Sprite", "correcta": false },
+        { "id": 4, "resposta": "Fanta", "correcta": false }
+      ]
+    },
+    {
+      "id": 20,
+      "pregunta": "Quina marca d'aliments és famosa pels seus cereals 'Froot Loops'?",
+      "respostes": [
+        { "id": 1, "resposta": "Kellogg's", "correcta": false },
+        { "id": 2, "resposta": "General Mills", "correcta": true },
+        { "id": 3, "resposta": "Post", "correcta": false },
+        { "id": 4, "resposta": "Quaker Oats", "correcta": false }
+      ]
+    }
+  ]
+}
+   
