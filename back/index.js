@@ -65,7 +65,7 @@ app.get('/getPreguntesAndroidApp', (req, res) => {
 
         // Asegúrate de que el índice no exceda la longitud de las preguntas
         if (currentQuestionIndex >= preguntas.preguntes.length) {
-            return res.status(404).json({ error: 'No hay más preguntas disponibles' });
+            return res.status(404).json({ error: 'Has acabado el Quizz!!' });
         }
 
         const pregunta = {
@@ -132,14 +132,13 @@ app.post('/addPregunta', (req, res) => {
 });
 
 // Actualizar pregunta
-// Actualizar pregunta
 app.put('/updatePregunta/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const nuevaPregunta = req.body;
 
     if (!nuevaPregunta.pregunta || !Array.isArray(nuevaPregunta.respostes) || nuevaPregunta.respostes.length !== 4) {
         return res.status(400).json({ error: 'La pregunta debe tener un texto y exactamente 4 respuestas' });
-    }
+    }   
 
     try {
         const preguntas = leerPreguntas();
